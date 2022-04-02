@@ -28,8 +28,12 @@ module.exports.launch = async (client) => {
     .use(express.static(path.join(__dirname, "/public"))) // Set the css and js folder to ./public
     .set("views", path.join(__dirname, "/views")) // Set the ejs templates to ./views
     .set("port", config.DASHBOARD.port) // Set the dashboard port
-    .use(session({ secret: process.env.SESSION_PASSWORD, resave: false, saveUninitialized: false })) // Set the express session password and configuration
-    .use(async function (req, res, next) {
+    .use(session({
+      secret: process.env.SESSION_PASSWORD,
+      resave: false,
+      saveUninitialized: false
+    })) // Set the express session password and configuration
+    .use(async function(req, res, next) {
       req.user = req.session.user;
       req.client = client;
       if (req.user && req.url !== "/") req.userInfos = await utils.fetchUser(req.user, req.client);
@@ -39,18 +43,18 @@ module.exports.launch = async (client) => {
     .use("/logout", logoutRouter)
     .use("/manage", guildManagerRouter)
     .use("/", mainRouter)
-    .use(CheckAuth, function (req, res) {
+    .use(CheckAuth, function(req, res) {
       res.status(404).render("404", {
         user: req.userInfos,
-        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`,
+        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
       });
     })
-    .use(CheckAuth, function (err, req, res) {
+    .use(CheckAuth, function(err, req, res) {
       console.error(err.stack);
       if (!req.user) return res.redirect("/");
       res.status(500).render("500", {
         user: req.userInfos,
-        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`,
+        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
       });
     });
 
