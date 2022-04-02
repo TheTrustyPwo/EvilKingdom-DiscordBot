@@ -18,7 +18,7 @@ module.exports = {
     SLASH: true, // Should the interactions be enabled
     CONTEXT: true, // Should contexts be enabled
     GLOBAL: false, // Should the interactions be registered globally
-    TEST_GUILD_ID: "842709201792401479", // Guild ID where the interactions should be registered. [** Test you commands here first **]
+    TEST_GUILD_IDS: ["842709201792401479"], // Guild ID where the interactions should be registered. [** Test you commands here first **]
   },
   XP_SYSTEM: {
     COOLDOWN: 5, // Cooldown in seconds between messages

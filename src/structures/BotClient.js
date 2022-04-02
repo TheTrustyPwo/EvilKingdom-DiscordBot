@@ -295,7 +295,7 @@ module.exports = class BotClient extends Client {
         .forEach((c) => toRegister.push(c));
     }
 
-    // Register GLobally
+    // Register Globally
     if (!guildId) {
       await this.application.commands.set(toRegister);
     }
