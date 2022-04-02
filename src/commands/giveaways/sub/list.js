@@ -1,7 +1,7 @@
 const { EMBED_COLORS } = require("@root/config");
 
 /**
- * @param {import('discord.js').GuildMember} member
+ * @param {import("discord.js").GuildMember} member
  */
 module.exports = async (member) => {
   // Permissions

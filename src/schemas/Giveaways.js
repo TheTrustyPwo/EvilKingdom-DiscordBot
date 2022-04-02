@@ -21,7 +21,7 @@ const Schema = new mongoose.Schema(
       noWinner: String,
       winners: String,
       endedAt: String,
-      hostedBy: String,
+      hostedBy: String
     },
     thumbnail: String,
     hostedBy: String,
@@ -38,21 +38,21 @@ const Schema = new mongoose.Schema(
       enabled: Boolean,
       content: String,
       threshold: Number,
-      embedColor: mongoose.Mixed,
+      embedColor: mongoose.Mixed
     },
     pauseOptions: {
       isPaused: Boolean,
       content: String,
       unPauseAfter: Number,
       embedColor: mongoose.Mixed,
-      durationAfterPause: Number,
+      durationAfterPause: Number
     },
     isDrop: Boolean,
     allowedMentions: {
       parse: { type: [String], default: undefined },
       users: { type: [String], default: undefined },
-      roles: { type: [String], default: undefined },
-    },
+      roles: { type: [String], default: undefined }
+    }
   },
   { id: false }
 );

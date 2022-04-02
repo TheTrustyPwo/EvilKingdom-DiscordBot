@@ -13,7 +13,7 @@ module.exports = class InvitesImportCommand extends Command {
       userPermissions: ["MANAGE_GUILD"],
       command: {
         enabled: true,
-        usage: "[@member]",
+        usage: "[@member]"
       },
       slashCommand: {
         enabled: true,
@@ -22,10 +22,10 @@ module.exports = class InvitesImportCommand extends Command {
             name: "user",
             description: "the user to import invites for",
             type: "USER",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

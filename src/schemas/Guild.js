@@ -7,45 +7,45 @@ const cache = new FixedSizeMap(CACHE_SIZE.GUILDS);
 const Schema = mongoose.Schema({
   _id: {
     type: String,
-    required: true,
+    required: true
   },
   data: {
     name: String,
     region: String,
     owner: {
       id: String,
-      tag: String,
+      tag: String
     },
     joinedAt: Date,
     leftAt: Date,
     bots: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   prefix: {
     type: String,
-    default: PREFIX,
+    default: PREFIX
   },
   ranking: {
-    enabled: Boolean,
+    enabled: Boolean
   },
   ticket: {
     log_channel: String,
     limit: {
       type: Number,
-      default: 10,
-    },
+      default: 10
+    }
   },
   automod: {
     debug: Boolean,
     strikes: {
       type: Number,
-      default: 5,
+      default: 5
     },
     action: {
       type: String,
-      default: "MUTE",
+      default: "MUTE"
     },
     anti_links: Boolean,
     anti_invites: Boolean,
@@ -53,7 +53,7 @@ const Schema = mongoose.Schema({
     anti_ghostping: Boolean,
     max_mentions: Number,
     max_role_mentions: Number,
-    max_lines: Number,
+    max_lines: Number
   },
   invite: {
     tracking: Boolean,
@@ -61,36 +61,36 @@ const Schema = mongoose.Schema({
       {
         invites: {
           type: String,
-          required: true,
+          required: true
         },
         _id: {
           type: String,
-          required: true,
-        },
-      },
-    ],
+          required: true
+        }
+      }
+    ]
   },
   flag_translation: {
-    enabled: Boolean,
+    enabled: Boolean
   },
   modlog_channel: String,
   max_warn: {
     action: {
       type: String,
-      default: "BAN",
+      default: "BAN"
     },
     limit: {
       type: Number,
-      default: 5,
-    },
+      default: 5
+    }
   },
   counters: [
     {
       _id: false,
       counter_type: String,
       name: String,
-      channel_id: String,
-    },
+      channel_id: String
+    }
   ],
   welcome: {
     enabled: Boolean,
@@ -100,8 +100,8 @@ const Schema = mongoose.Schema({
       description: String,
       color: String,
       thumbnail: Boolean,
-      footer: String,
-    },
+      footer: String
+    }
   },
   farewell: {
     enabled: Boolean,
@@ -111,10 +111,10 @@ const Schema = mongoose.Schema({
       description: String,
       color: String,
       thumbnail: Boolean,
-      footer: String,
-    },
+      footer: String
+    }
   },
-  autorole: String,
+  autorole: String
 });
 
 const Model = mongoose.model("guild", Schema);
@@ -132,10 +132,10 @@ module.exports = {
           region: guild.preferredLocale,
           owner: {
             id: guild.ownerId,
-            tag: guild.members.cache.get(guild.ownerId).user.tag,
+            tag: guild.members.cache.get(guild.ownerId).user.tag
           },
-          joinedAt: guild.joinedAt,
-        },
+          joinedAt: guild.joinedAt
+        }
       });
 
       if (!guild.id) {
@@ -146,5 +146,5 @@ module.exports = {
     }
     cache.add(guild.id, guildData);
     return guildData;
-  },
+  }
 };

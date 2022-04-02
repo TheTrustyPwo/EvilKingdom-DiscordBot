@@ -12,7 +12,7 @@ module.exports = class Loop extends Command {
       command: {
         enabled: true,
         minArgsCount: 1,
-        usage: "<queue|track>",
+        usage: "<queue|track>"
       },
       slashCommand: {
         enabled: true,
@@ -25,16 +25,16 @@ module.exports = class Loop extends Command {
             choices: [
               {
                 name: "queue",
-                value: "queue",
+                value: "queue"
               },
               {
                 name: "track",
-                value: "track",
-              },
-            ],
-          },
-        ],
-      },
+                value: "track"
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

@@ -4,7 +4,7 @@ const { sendMessage } = require("@utils/botUtils");
 
 /**
  * @param {string} content
- * @param {import('discord.js').GuildMember} member
+ * @param {import("discord.js").GuildMember} member
  * @param {Object} inviterData
  */
 const parse = async (content, member, inviterData = {}) => {
@@ -42,7 +42,7 @@ const parse = async (content, member, inviterData = {}) => {
 };
 
 /**
- * @param {import('discord.js').GuildMember} member
+ * @param {import("discord.js").GuildMember} member
  * @param {"WELCOME"|"FAREWELL"} type
  * @param {Object} config
  * @param {Object} inviterData
@@ -77,7 +77,7 @@ const buildGreeting = async (member, type, config, inviterData) => {
 
 /**
  * Send welcome message
- * @param {import('discord.js').GuildMember} member
+ * @param {import("discord.js").GuildMember} member
  * @param {Object} inviterData
  */
 async function sendWelcome(member, inviterData = {}) {
@@ -96,7 +96,7 @@ async function sendWelcome(member, inviterData = {}) {
 
 /**
  * Send farewell message
- * @param {import('discord.js').GuildMember} member
+ * @param {import("discord.js").GuildMember} member
  * @param {Object} inviterData
  */
 async function sendFarewell(member, inviterData = {}) {
@@ -116,5 +116,5 @@ async function sendFarewell(member, inviterData = {}) {
 module.exports = {
   buildGreeting,
   sendWelcome,
-  sendFarewell,
+  sendFarewell
 };

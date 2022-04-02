@@ -12,7 +12,7 @@ module.exports = class Eval extends Command {
       command: {
         enabled: true,
         usage: "<script>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -21,10 +21,10 @@ module.exports = class Eval extends Command {
             name: "input",
             description: "content to eval",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

@@ -6,7 +6,7 @@ const levels = {
   none: 0.0,
   low: 0.1,
   medium: 0.15,
-  high: 0.25,
+  high: 0.25
 };
 
 module.exports = class Bassboost extends Command {
@@ -19,7 +19,7 @@ module.exports = class Bassboost extends Command {
       command: {
         enabled: true,
         minArgsCount: 1,
-        usage: "<none|low|medium|high>",
+        usage: "<none|low|medium|high>"
       },
       slashCommand: {
         enabled: true,
@@ -32,24 +32,24 @@ module.exports = class Bassboost extends Command {
             choices: [
               {
                 name: "none",
-                value: "none",
+                value: "none"
               },
               {
                 name: "low",
-                value: "low",
+                value: "low"
               },
               {
                 name: "medium",
-                value: "medium",
+                value: "medium"
               },
               {
                 name: "high",
-                value: "high",
-              },
-            ],
-          },
-        ],
-      },
+                value: "high"
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

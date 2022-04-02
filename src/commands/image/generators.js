@@ -28,7 +28,7 @@ const availableGenerators = [
   "thomas",
   "trash",
   "wanted",
-  "wasted",
+  "wasted"
 ];
 
 module.exports = class Generator extends Command {
@@ -41,7 +41,7 @@ module.exports = class Generator extends Command {
       botPermissions: ["EMBED_LINKS", "ATTACH_FILES"],
       command: {
         enabled: true,
-        aliases: availableGenerators,
+        aliases: availableGenerators
       },
       slashCommand: {
         enabled: true,
@@ -51,22 +51,22 @@ module.exports = class Generator extends Command {
             description: "the type of generator",
             type: "STRING",
             required: true,
-            choices: availableGenerators.map((gen) => ({ name: gen, value: gen })),
+            choices: availableGenerators.map((gen) => ({ name: gen, value: gen }))
           },
           {
             name: "user",
             description: "the user to whose avatar the generator needs to applied",
             type: "USER",
-            required: false,
+            required: false
           },
           {
             name: "link",
             description: "the image link to which the generator needs to applied",
             type: "STRING",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

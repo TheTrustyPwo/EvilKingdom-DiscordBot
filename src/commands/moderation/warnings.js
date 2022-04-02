@@ -17,13 +17,13 @@ module.exports = class Warnings extends Command {
         subcommands: [
           {
             trigger: "list [member]",
-            description: "list all warnings for a user",
+            description: "list all warnings for a user"
           },
           {
             trigger: "clear <member>",
-            description: "clear all warnings for a user",
-          },
-        ],
+            description: "clear all warnings for a user"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -37,9 +37,9 @@ module.exports = class Warnings extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "clear",
@@ -50,12 +50,12 @@ module.exports = class Warnings extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 
@@ -127,7 +127,7 @@ async function listWarnings(target, { guildId }) {
   const acc = warnings.map((warning, i) => `${i + 1}. ${warning.reason} [By ${warning.admin.tag}]`).join("\n");
   const embed = new MessageEmbed({
     author: `${target.user.tag}'s warnings`,
-    description: acc,
+    description: acc
   });
 
   return { embeds: [embed] };

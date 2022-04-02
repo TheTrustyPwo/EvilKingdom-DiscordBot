@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const reqString = {
   type: String,
-  required: true,
+  required: true
 };
 
 const Schema = mongoose.Schema({
@@ -11,10 +11,10 @@ const Schema = mongoose.Schema({
   reason: String,
   admin: {
     id: reqString,
-    tag: reqString,
+    tag: reqString
   },
   type: reqString,
-  expires: Date,
+  expires: Date
 });
 
 const Model = mongoose.model("mod-logs", Schema);
@@ -27,22 +27,22 @@ module.exports = {
       reason,
       admin: {
         id: admin.id,
-        tag: admin.user.tag,
+        tag: admin.user.tag
       },
-      type,
+      type
     }).save(),
 
   getWarningLogs: async (guildId, targetId) =>
     Model.find({
       guild_id: guildId,
       member_id: targetId,
-      type: "WARN",
+      type: "WARN"
     }).lean(),
 
   clearWarningLogs: async (guildId, targetId) =>
     Model.deleteMany({
       guild_id: guildId,
       member_id: targetId,
-      type: "WARN",
-    }),
+      type: "WARN"
+    })
 };

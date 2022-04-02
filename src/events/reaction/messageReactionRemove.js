@@ -1,9 +1,9 @@
 const { reactionHandler } = require("@src/handlers");
 
 /**
- * @param {import('@src/structures').BotClient} client
- * @param {import('discord.js').MessageReaction|import('discord.js').PartialMessageReaction} reaction
- * @param {import('discord.js').User} user
+ * @param {import("@src/structures").BotClient} client
+ * @param {import("discord.js").MessageReaction|import("discord.js").PartialMessageReaction} reaction
+ * @param {import("discord.js").User} user
  */
 module.exports = async (client, reaction, user) => {
   if (reaction.partial) {

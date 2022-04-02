@@ -13,7 +13,7 @@ module.exports = class Play extends Command {
       command: {
         enabled: true,
         usage: "<song-name>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -22,10 +22,10 @@ module.exports = class Play extends Command {
             name: "query",
             description: "song name or url",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 
@@ -62,7 +62,7 @@ async function play({ member, guild, channel }, user, query) {
       guild: guild.id,
       textChannel: channel.id,
       voiceChannel: member.voice.channel.id,
-      volume: 50,
+      volume: 50
     });
   } catch (ex) {
     if (ex.message === "No available nodes.") {

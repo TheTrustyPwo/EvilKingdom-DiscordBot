@@ -14,7 +14,7 @@ module.exports = class CounterSetup extends Command {
       command: {
         enabled: true,
         usage: "<type> <channel-name>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -28,26 +28,26 @@ module.exports = class CounterSetup extends Command {
             choices: [
               {
                 name: "users",
-                value: "USERS",
+                value: "USERS"
               },
               {
                 name: "members",
-                value: "MEMBERS",
+                value: "MEMBERS"
               },
               {
                 name: "bots",
-                value: "BOTS",
-              },
-            ],
+                value: "BOTS"
+              }
+            ]
           },
           {
             name: "name",
             description: "name of the counter channel",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 
@@ -93,13 +93,13 @@ async function setupCounter(guild, type, name) {
     permissionOverwrites: [
       {
         id: guild.roles.everyone,
-        deny: ["CONNECT"],
+        deny: ["CONNECT"]
       },
       {
         id: guild.me.id,
-        allow: ["VIEW_CHANNEL", "MANAGE_CHANNELS", "CONNECT"],
-      },
-    ],
+        allow: ["VIEW_CHANNEL", "MANAGE_CHANNELS", "CONNECT"]
+      }
+    ]
   });
 
   const settings = await getSettings(guild);
@@ -112,7 +112,7 @@ async function setupCounter(guild, type, name) {
     settings.counters.push({
       counter_type: type,
       channel_id: vc.id,
-      name,
+      name
     });
   }
 

@@ -12,7 +12,7 @@ module.exports = class Profile extends Command {
       category: "INFORMATION",
       command: {
         enabled: true,
-        usage: "[@member|id]",
+        usage: "[@member|id]"
       },
       slashCommand: {
         enabled: true,
@@ -21,10 +21,10 @@ module.exports = class Profile extends Command {
             name: "user",
             description: "target user",
             type: "USER",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

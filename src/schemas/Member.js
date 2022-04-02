@@ -6,7 +6,7 @@ const cache = new FixedSizeMap(CACHE_SIZE.MEMBERS);
 
 const ReqString = {
   type: String,
-  required: true,
+  required: true
 };
 
 const Schema = mongoose.Schema({
@@ -14,19 +14,19 @@ const Schema = mongoose.Schema({
   member_id: ReqString,
   xp: {
     type: Number,
-    default: 0,
+    default: 0
   },
   level: {
     type: Number,
-    default: 1,
+    default: 1
   },
   strikes: {
     type: Number,
-    default: 0,
+    default: 0
   },
   warnings: {
     type: Number,
-    default: 0,
+    default: 0
   },
   invite_data: {
     inviter: String,
@@ -34,11 +34,11 @@ const Schema = mongoose.Schema({
     tracked: { type: Number, default: 0 },
     fake: { type: Number, default: 0 },
     left: { type: Number, default: 0 },
-    added: { type: Number, default: 0 },
+    added: { type: Number, default: 0 }
   },
   mute: {
-    active: Boolean,
-  },
+    active: Boolean
+  }
 });
 
 const Model = mongoose.model("members", Schema);
@@ -52,7 +52,7 @@ module.exports = {
     if (!member) {
       member = new Model({
         guild_id: guildId,
-        member_id: memberId,
+        member_id: memberId
       });
     }
 
@@ -62,7 +62,7 @@ module.exports = {
 
   getXpLb: async (guildId, limit = 10) =>
     Model.find({
-      guild_id: guildId,
+      guild_id: guildId
     })
       .limit(limit)
       .sort({ level: -1, xp: -1 })
@@ -77,13 +77,13 @@ module.exports = {
           invites: {
             $subtract: [
               { $add: ["$invite_data.tracked", "$invite_data.added"] },
-              { $add: ["$invite_data.left", "$invite_data.fake"] },
-            ],
-          },
-        },
+              { $add: ["$invite_data.left", "$invite_data.fake"] }
+            ]
+          }
+        }
       },
       { $match: { invites: { $gt: 0 } } },
       { $sort: { invites: -1 } },
-      { $limit: limit },
-    ]),
+      { $limit: limit }
+    ])
 };

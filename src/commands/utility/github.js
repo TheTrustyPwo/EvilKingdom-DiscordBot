@@ -16,7 +16,7 @@ module.exports = class GithubCommand extends Command {
         enabled: true,
         aliases: ["git"],
         usage: "<username>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -25,10 +25,10 @@ module.exports = class GithubCommand extends Command {
             name: "username",
             description: "github username",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 
@@ -70,7 +70,7 @@ async function getGithubUser(target, author) {
     following,
     bio,
     location,
-    blog,
+    blog
   } = json;
 
   let website = websiteProvided(blog) ? `[Click me](${blog})` : "Not Provided";
@@ -80,7 +80,7 @@ async function getGithubUser(target, author) {
     .setAuthor({
       name: `GitHub User: ${username}`,
       url: userPageLink,
-      iconURL: avatarUrl,
+      iconURL: avatarUrl
     })
     .addField(
       "User Info",

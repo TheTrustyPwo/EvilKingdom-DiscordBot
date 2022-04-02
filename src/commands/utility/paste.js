@@ -13,7 +13,7 @@ module.exports = class PasteCommand extends Command {
       command: {
         enabled: true,
         minArgsCount: 2,
-        usage: "<title> <content>",
+        usage: "<title> <content>"
       },
       slashCommand: {
         enabled: true,
@@ -22,16 +22,16 @@ module.exports = class PasteCommand extends Command {
             name: "title",
             description: "title for your content",
             required: true,
-            type: "STRING",
+            type: "STRING"
           },
           {
             name: "content",
             description: "content to be posted to bin",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

@@ -13,11 +13,11 @@ module.exports = class Skip extends Command {
       botPermissions: ["EMBED_LINKS"],
       command: {
         enabled: true,
-        aliases: ["nowplaying"],
+        aliases: ["nowplaying"]
       },
       slashCommand: {
-        enabled: true,
-      },
+        enabled: true
+      }
     });
   }
 
@@ -55,10 +55,10 @@ function nowPlaying({ client, guildId }) {
     .addField(
       "\u200b",
       new Date(player.position).toISOString().slice(11, 19) +
-        " [" +
-        splitBar(track.duration > 6.048e8 ? player.position : track.duration, player.position, 15)[0] +
-        "] " +
-        end,
+      " [" +
+      splitBar(track.duration > 6.048e8 ? player.position : track.duration, player.position, 15)[0] +
+      "] " +
+      end,
       false
     );
 

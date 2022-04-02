@@ -13,11 +13,11 @@ module.exports = class ChannelInfo extends Command {
       command: {
         enabled: true,
         usage: "[#channel|id]",
-        aliases: ["chinfo"],
+        aliases: ["chinfo"]
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

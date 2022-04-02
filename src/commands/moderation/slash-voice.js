@@ -18,7 +18,7 @@ module.exports = class VoiceCommand extends Command {
       userPermissions: ["MUTE_MEMBERS", "MOVE_MEMBERS", "DEAFEN_MEMBERS"],
       botPermissions: ["MUTE_MEMBERS", "MOVE_MEMBERS", "DEAFEN_MEMBERS"],
       command: {
-        enabled: false,
+        enabled: false
       },
       slashCommand: {
         enabled: true,
@@ -32,15 +32,15 @@ module.exports = class VoiceCommand extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "reason",
                 description: "reason for mute",
                 type: "STRING",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "unmute",
@@ -51,15 +51,15 @@ module.exports = class VoiceCommand extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "reason",
                 description: "reason for unmute",
                 type: "STRING",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "deafen",
@@ -70,15 +70,15 @@ module.exports = class VoiceCommand extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "reason",
                 description: "reason for deafen",
                 type: "STRING",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "undeafen",
@@ -89,15 +89,15 @@ module.exports = class VoiceCommand extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "reason",
                 description: "reason for undeafen",
                 type: "STRING",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "kick",
@@ -108,15 +108,15 @@ module.exports = class VoiceCommand extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "reason",
                 description: "reason for mute",
                 type: "STRING",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "move",
@@ -127,25 +127,25 @@ module.exports = class VoiceCommand extends Command {
                 name: "user",
                 description: "the target member",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "channel",
                 description: "the channel to move member to",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_VOICE", "GUILD_STAGE_VOICE"],
-                required: true,
+                required: true
               },
               {
                 name: "reason",
                 description: "reason for mute",
                 type: "STRING",
-                required: false,
-              },
-            ],
-          },
-        ],
-      },
+                required: false
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

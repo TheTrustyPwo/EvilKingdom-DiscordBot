@@ -13,7 +13,7 @@ module.exports = class FlagTranslation extends Command {
         enabled: true,
         aliases: ["flagtr"],
         minArgsCount: 1,
-        usage: "<on|off>",
+        usage: "<on|off>"
       },
       slashCommand: {
         enabled: true,
@@ -27,16 +27,16 @@ module.exports = class FlagTranslation extends Command {
             choices: [
               {
                 name: "ON",
-                value: "ON",
+                value: "ON"
               },
               {
                 name: "OFF",
-                value: "OFF",
-              },
-            ],
-          },
-        ],
-      },
+                value: "OFF"
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

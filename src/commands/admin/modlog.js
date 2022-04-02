@@ -13,7 +13,7 @@ module.exports = class ModLog extends Command {
       command: {
         enabled: true,
         usage: "<#channel|off>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -24,10 +24,10 @@ module.exports = class ModLog extends Command {
             description: "channels to send mod logs",
             required: false,
             type: "CHANNEL",
-            channelTypes: ["GUILD_TEXT"],
-          },
-        ],
-      },
+            channelTypes: ["GUILD_TEXT"]
+          }
+        ]
+      }
     });
   }
 

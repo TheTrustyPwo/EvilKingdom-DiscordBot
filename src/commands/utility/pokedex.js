@@ -15,7 +15,7 @@ module.exports = class Pokedex extends Command {
       command: {
         enabled: true,
         usage: "<pokemon>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -24,10 +24,10 @@ module.exports = class Pokedex extends Command {
             name: "pokemon",
             description: "pokemon name to get information for",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

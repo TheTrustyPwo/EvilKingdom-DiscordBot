@@ -9,7 +9,7 @@ const cacheInvite = (invite, isVanity) => ({
   code: invite.code,
   uses: invite.uses,
   maxUses: invite.maxUses,
-  inviterId: isVanity ? "VANITY" : invite.inviter?.id,
+  inviterId: isVanity ? "VANITY" : invite.inviter?.id
 });
 
 /**
@@ -39,7 +39,8 @@ async function cacheGuildInvites(guild) {
 const checkInviteRewards = async (guild, inviterData = {}, isAdded) => {
   const settings = await getSettings(guild);
   if (settings.invite.ranks.length > 0 && inviterData?.member_id) {
-    const inviter = await guild.members.fetch(inviterData?.member_id).catch(() => {});
+    const inviter = await guild.members.fetch(inviterData?.member_id).catch(() => {
+    });
     if (!inviter) return;
 
     const invites = getEffectiveInvites(inviterData.invite_data);
@@ -140,5 +141,5 @@ module.exports = {
   cacheGuildInvites,
   checkInviteRewards,
   getEffectiveInvites,
-  cacheInvite,
+  cacheInvite
 };

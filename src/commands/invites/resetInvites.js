@@ -15,7 +15,7 @@ module.exports = class ResetInvites extends Command {
         enabled: true,
         usage: "<@member>",
         aliases: ["clearinvites"],
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -24,10 +24,10 @@ module.exports = class ResetInvites extends Command {
             name: "user",
             description: "the user to clear invites for",
             type: "USER",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

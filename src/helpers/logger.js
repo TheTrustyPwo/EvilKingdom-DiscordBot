@@ -7,7 +7,7 @@ const { MessageEmbed, WebhookClient } = require("discord.js"),
 const simpleLogger = nodeLogger.createRollingFileLogger({
   logDirectory: "./logs",
   fileNamePattern: "roll-<DATE>.log",
-  dateFormat: "yyyy.MM.DD",
+  dateFormat: "yyyy.MM.DD"
 });
 
 simpleLogger.setLevel("debug");
@@ -28,7 +28,7 @@ const sendWebhook = (content, err) => {
 
   errorWebhook.send({
     username: "Logs",
-    embeds: [embed],
+    embeds: [embed]
   });
 };
 

@@ -11,7 +11,7 @@ module.exports = class Queue extends Command {
       botPermissions: ["EMBED_LINKS"],
       command: {
         enabled: true,
-        usage: "[page]",
+        usage: "[page]"
       },
       slashCommand: {
         enabled: true,
@@ -20,10 +20,10 @@ module.exports = class Queue extends Command {
             name: "page",
             description: "page number",
             type: "INTEGER",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

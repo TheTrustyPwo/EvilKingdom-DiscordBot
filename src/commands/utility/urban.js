@@ -15,7 +15,7 @@ module.exports = class UrbanCommand extends Command {
       command: {
         enabled: true,
         usage: "<word>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -24,10 +24,10 @@ module.exports = class UrbanCommand extends Command {
             name: "word",
             description: "the word for which you want to urban meaning",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

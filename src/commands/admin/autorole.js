@@ -13,7 +13,7 @@ module.exports = class AutoRole extends Command {
       command: {
         enabled: true,
         usage: "<role|off>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -28,23 +28,23 @@ module.exports = class AutoRole extends Command {
                 name: "role",
                 description: "the role to be given",
                 type: "ROLE",
-                required: false,
+                required: false
               },
               {
                 name: "role_id",
                 description: "the role id to be given",
                 type: "STRING",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "remove",
             description: "disable the autorole",
-            type: "SUB_COMMAND",
-          },
-        ],
-      },
+            type: "SUB_COMMAND"
+          }
+        ]
+      }
     });
   }
 

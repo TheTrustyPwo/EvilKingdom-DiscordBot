@@ -14,7 +14,7 @@ module.exports = class SoftBan extends Command {
       command: {
         enabled: true,
         usage: "<ID|@member> [reason]",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -23,16 +23,16 @@ module.exports = class SoftBan extends Command {
             name: "user",
             description: "the target member",
             type: "USER",
-            required: true,
+            required: true
           },
           {
             name: "reason",
             description: "reason for softban",
             type: "STRING",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

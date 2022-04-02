@@ -13,7 +13,7 @@ module.exports = class PurgeCommand extends Command {
       category: "MODERATION",
       userPermissions: ["MANAGE_MESSAGES"],
       command: {
-        enabled: false,
+        enabled: false
       },
       slashCommand: {
         enabled: true,
@@ -28,15 +28,15 @@ module.exports = class PurgeCommand extends Command {
                 description: "channel from which messages must be cleaned",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "amount",
                 description: "number of messages to be deleted (Max 99)",
                 type: "INTEGER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "attachments",
@@ -48,15 +48,15 @@ module.exports = class PurgeCommand extends Command {
                 description: "channel from which messages must be cleaned",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "amount",
                 description: "number of messages to be deleted (Max 99)",
                 type: "INTEGER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "bots",
@@ -68,15 +68,15 @@ module.exports = class PurgeCommand extends Command {
                 description: "channel from which messages must be cleaned",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "amount",
                 description: "number of messages to be deleted (Max 99)",
                 type: "INTEGER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "links",
@@ -88,15 +88,15 @@ module.exports = class PurgeCommand extends Command {
                 description: "channel from which messages must be cleaned",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "amount",
                 description: "number of messages to be deleted (Max 99)",
                 type: "INTEGER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "token",
@@ -108,21 +108,21 @@ module.exports = class PurgeCommand extends Command {
                 description: "channel from which messages must be cleaned",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "token",
                 description: "token to be looked up in messages",
                 type: "STRING",
-                required: true,
+                required: true
               },
               {
                 name: "amount",
                 description: "number of messages to be deleted (Max 99)",
                 type: "INTEGER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "user",
@@ -134,24 +134,24 @@ module.exports = class PurgeCommand extends Command {
                 description: "channel from which messages must be cleaned",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "user",
                 description: "user whose messages needs to be cleaned",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "amount",
                 description: "number of messages to be deleted (Max 99)",
                 type: "INTEGER",
-                required: false,
-              },
-            ],
-          },
-        ],
-      },
+                required: false
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 
@@ -204,7 +204,7 @@ module.exports = class PurgeCommand extends Command {
       const message = `Successfully cleaned ${response} messages in ${channel}`;
       if (channel.id !== interaction.channelId) await interaction.followUp(message);
       else await sendMessage(channel, message, 5);
-      return;
+
     }
 
     // Member missing permissions

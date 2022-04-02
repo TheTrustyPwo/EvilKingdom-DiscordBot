@@ -17,21 +17,21 @@ module.exports = class AutomodConfigCommand extends Command {
         subcommands: [
           {
             trigger: "status",
-            description: "check automod configuration for this guild",
+            description: "check automod configuration for this guild"
           },
           {
             trigger: "strikes <number>",
-            description: "maximum number of strikes a member can receive before taking an action",
+            description: "maximum number of strikes a member can receive before taking an action"
           },
           {
             trigger: "action <MUTE|KICK|BAN>",
-            description: "set action to be performed after receiving maximum strikes",
+            description: "set action to be performed after receiving maximum strikes"
           },
           {
             trigger: "debug <ON|OFF>",
-            description: "turns on automod for messages sent by admins and moderators",
-          },
-        ],
+            description: "turns on automod for messages sent by admins and moderators"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -40,7 +40,7 @@ module.exports = class AutomodConfigCommand extends Command {
           {
             name: "status",
             description: "Check automod configuration",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "strikes",
@@ -51,9 +51,9 @@ module.exports = class AutomodConfigCommand extends Command {
                 name: "amount",
                 description: "number of strikes (default 5)",
                 required: true,
-                type: "INTEGER",
-              },
-            ],
+                type: "INTEGER"
+              }
+            ]
           },
           {
             name: "action",
@@ -68,19 +68,19 @@ module.exports = class AutomodConfigCommand extends Command {
                 choices: [
                   {
                     name: "MUTE",
-                    value: "MUTE",
+                    value: "MUTE"
                   },
                   {
                     name: "KICK",
-                    value: "KICK",
+                    value: "KICK"
                   },
                   {
                     name: "BAN",
-                    value: "BAN",
-                  },
-                ],
-              },
-            ],
+                    value: "BAN"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "debug",
@@ -95,18 +95,18 @@ module.exports = class AutomodConfigCommand extends Command {
                 choices: [
                   {
                     name: "ON",
-                    value: "ON",
+                    value: "ON"
                   },
                   {
                     name: "OFF",
-                    value: "OFF",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
+                    value: "OFF"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 
@@ -187,14 +187,14 @@ async function getStatus(settings, guild) {
     singleLine: true,
     header: {
       content: "Automod Configuration",
-      alignment: "center",
+      alignment: "center"
     },
     columns: [
       {},
       {
-        alignment: "center",
-      },
-    ],
+        alignment: "center"
+      }
+    ]
   });
 
   const embed = new MessageEmbed()

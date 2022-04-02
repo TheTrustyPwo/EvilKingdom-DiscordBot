@@ -9,7 +9,7 @@ module.exports = class Profile extends BaseContext {
       description: "get users profile",
       type: "USER",
       enabled: true,
-      ephemeral: true,
+      ephemeral: true
     });
   }
 

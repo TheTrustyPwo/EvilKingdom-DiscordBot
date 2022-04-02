@@ -13,7 +13,7 @@ module.exports = class XPSystem extends Command {
         enabled: true,
         aliases: ["xpsystem", "xptracking"],
         usage: "<on|off>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -27,16 +27,16 @@ module.exports = class XPSystem extends Command {
             choices: [
               {
                 name: "ON",
-                value: "ON",
+                value: "ON"
               },
               {
                 name: "OFF",
-                value: "OFF",
-              },
-            ],
-          },
-        ],
-      },
+                value: "OFF"
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

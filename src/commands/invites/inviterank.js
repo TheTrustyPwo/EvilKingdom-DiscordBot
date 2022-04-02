@@ -17,13 +17,13 @@ module.exports = class AddInvitesCommand extends Command {
         subcommands: [
           {
             trigger: "add <role> <invites>",
-            description: "add auto-rank after reaching a particular number of invites",
+            description: "add auto-rank after reaching a particular number of invites"
           },
           {
             trigger: "remove role",
-            description: "remove invite rank configured with that role",
-          },
-        ],
+            description: "remove invite rank configured with that role"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -38,15 +38,15 @@ module.exports = class AddInvitesCommand extends Command {
                 name: "role",
                 description: "role to be given",
                 type: "ROLE",
-                required: true,
+                required: true
               },
               {
                 name: "invites",
                 description: "number of invites required to obtain the role",
                 type: "INTEGER",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "remove",
@@ -57,12 +57,12 @@ module.exports = class AddInvitesCommand extends Command {
                 name: "role",
                 description: "role with configured invite rank",
                 type: "ROLE",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

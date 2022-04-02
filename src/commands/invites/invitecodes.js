@@ -12,7 +12,7 @@ module.exports = class InviteCodes extends Command {
       botPermissions: ["EMBED_LINKS", "MANAGE_GUILD"],
       command: {
         enabled: true,
-        usage: "[@member|id]",
+        usage: "[@member|id]"
       },
       slashCommand: {
         enabled: true,
@@ -21,10 +21,10 @@ module.exports = class InviteCodes extends Command {
             name: "user",
             description: "the user to get the invite codes for",
             type: "USER",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

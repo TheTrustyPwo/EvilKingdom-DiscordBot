@@ -16,7 +16,7 @@ module.exports = class Rank extends Command {
       botPermissions: ["ATTACH_FILES"],
       command: {
         enabled: true,
-        usage: "[@member|id]",
+        usage: "[@member|id]"
       },
       slashCommand: {
         enabled: true,
@@ -25,10 +25,10 @@ module.exports = class Rank extends Command {
             name: "user",
             description: "target user",
             type: "USER",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

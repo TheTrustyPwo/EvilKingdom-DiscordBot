@@ -14,8 +14,8 @@ module.exports = class PurgeCommand extends Command {
       command: {
         enabled: true,
         usage: "<amount>",
-        minArgsCount: 1,
-      },
+        minArgsCount: 1
+      }
     });
   }
 

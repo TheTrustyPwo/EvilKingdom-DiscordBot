@@ -18,13 +18,13 @@ module.exports = class FlipCommand extends Command {
         subcommands: [
           {
             trigger: "coin",
-            description: "flips a coin heads or tails",
+            description: "flips a coin heads or tails"
           },
           {
             trigger: "text <input>",
-            description: "reverses the given message",
-          },
-        ],
+            description: "reverses the given message"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -32,7 +32,7 @@ module.exports = class FlipCommand extends Command {
           {
             name: "coin",
             description: "flip a coin",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "text",
@@ -43,12 +43,12 @@ module.exports = class FlipCommand extends Command {
                 name: "input",
                 description: "text to flip",
                 type: "STRING",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 
@@ -66,10 +66,12 @@ module.exports = class FlipCommand extends Command {
       message.channel.send({ embeds: [firstEmbed(message.author)] }).then((coin) => {
         // 2nd embed
         setTimeout(() => {
-          coin.edit({ embeds: [secondEmbed()] }).catch(() => {});
+          coin.edit({ embeds: [secondEmbed()] }).catch(() => {
+          });
           // 3rd embed
           setTimeout(() => {
-            coin.edit({ embeds: [resultEmbed(toss)] }).catch(() => {});
+            coin.edit({ embeds: [resultEmbed(toss)] }).catch(() => {
+            });
           }, 2000);
         }, 2000);
       });
@@ -99,9 +101,11 @@ module.exports = class FlipCommand extends Command {
       await interaction.followUp({ embeds: [firstEmbed(interaction.user)] });
 
       setTimeout(() => {
-        interaction.editReply({ embeds: [secondEmbed()] }).catch(() => {});
+        interaction.editReply({ embeds: [secondEmbed()] }).catch(() => {
+        });
         setTimeout(() => {
-          interaction.editReply({ embeds: [resultEmbed(toss)] }).catch(() => {});
+          interaction.editReply({ embeds: [resultEmbed(toss)] }).catch(() => {
+          });
         }, 2000);
       }, 2000);
     }

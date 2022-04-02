@@ -9,7 +9,7 @@ const channelTypes = {
   GUILD_NEWS: "News",
   GUILD_NEWS_THREAD: "News Thread",
   GUILD_VOICE: "Voice",
-  GUILD_STAGE_VOICE: "Stage Voice",
+  GUILD_STAGE_VOICE: "Stage Voice"
 };
 
 module.exports = (channel) => {

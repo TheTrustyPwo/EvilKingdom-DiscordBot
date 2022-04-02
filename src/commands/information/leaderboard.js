@@ -15,7 +15,7 @@ module.exports = class LeaderBoard extends Command {
         enabled: true,
         aliases: ["lb"],
         minArgsCount: 1,
-        usage: "<xp|invite>",
+        usage: "<xp|invite>"
       },
       slashCommand: {
         enabled: true,
@@ -28,16 +28,16 @@ module.exports = class LeaderBoard extends Command {
             choices: [
               {
                 name: "xp",
-                value: "xp",
+                value: "xp"
               },
               {
                 name: "invite",
-                value: "invite",
-              },
-            ],
-          },
-        ],
-      },
+                value: "invite"
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

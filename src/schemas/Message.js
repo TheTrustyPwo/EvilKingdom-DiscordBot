@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const reqString = {
   type: String,
-  required: true,
+  required: true
 };
 
 const Schema = mongoose.Schema({
@@ -13,13 +13,13 @@ const Schema = mongoose.Schema({
     {
       _id: false,
       emote: reqString,
-      role_id: reqString,
-    },
+      role_id: reqString
+    }
   ],
   ticket: {
     title: reqString,
-    support_roles: [],
-  },
+    support_roles: []
+  }
 });
 
 const Model = mongoose.model("messages", Schema);
@@ -34,7 +34,7 @@ module.exports = {
       guild_id: guildId,
       channel_id: channelId,
       message_id: messageId,
-      ticket: { $exists: true },
+      ticket: { $exists: true }
     }).lean(),
 
   createNewTicket: async (guildId, channelId, messageId, title, roleId) =>
@@ -44,8 +44,8 @@ module.exports = {
       message_id: messageId,
       ticket: {
         title,
-        support_role: [roleId],
-      },
+        support_role: [roleId]
+      }
     }).save(),
 
   cacheReactionRoles: async (client) => {
@@ -83,8 +83,8 @@ module.exports = {
       filter,
       {
         $push: {
-          roles: { emote, role_id: roleId },
-        },
+          roles: { emote, role_id: roleId }
+        }
       },
       { upsert: true, new: true }
     ).lean();
@@ -98,8 +98,8 @@ module.exports = {
     await Model.deleteOne({
       guild_id: guildId,
       channel_id: channelId,
-      message_id: messageId,
+      message_id: messageId
     });
     rrCache.delete(getKey(guildId, channelId, messageId));
-  },
+  }
 };

@@ -9,10 +9,10 @@ module.exports = class MusicManager extends Manager {
     const plugins = [
       new Deezer({
         albumLimit: 1,
-        playlistLimit: 1,
+        playlistLimit: 1
       }),
 
-      new Facebook(),
+      new Facebook()
     ];
 
     if (process.env.SPOTIFY_CLIENT_ID && process.env.SPOTIFY_CLIENT_SECRET) {
@@ -21,7 +21,7 @@ module.exports = class MusicManager extends Manager {
           clientID: process.env.SPOTIFY_CLIENT_ID,
           clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
           albumLimit: 1,
-          playlistLimit: 1,
+          playlistLimit: 1
         })
       );
     }
@@ -34,7 +34,7 @@ module.exports = class MusicManager extends Manager {
       send: (id, payload) => {
         const guild = client.guilds.cache.get(id);
         if (guild) guild.shard.send(payload);
-      },
+      }
     });
   }
 };

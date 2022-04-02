@@ -14,7 +14,7 @@ module.exports = class InviteTracker extends Command {
         enabled: true,
         aliases: ["invitetracking"],
         usage: "<ON|OFF>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -27,16 +27,16 @@ module.exports = class InviteTracker extends Command {
             choices: [
               {
                 name: "ON",
-                value: "ON",
+                value: "ON"
               },
               {
                 name: "OFF",
-                value: "OFF",
-              },
-            ],
-          },
-        ],
-      },
+                value: "OFF"
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

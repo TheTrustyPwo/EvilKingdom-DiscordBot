@@ -12,11 +12,11 @@ module.exports = class EmojiInfo extends Command {
       command: {
         enabled: true,
         usage: "<emoji>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

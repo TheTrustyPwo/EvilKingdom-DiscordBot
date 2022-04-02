@@ -7,7 +7,7 @@ const { EMBED_COLORS } = require("@root/config");
 
 /**
  * Check if the message needs to be moderated and has required permissions
- * @param {import('discord.js').Message} message
+ * @param {import("discord.js").Message} message
  */
 const shouldModerate = (message) => {
   const { member, guild, channel } = message;
@@ -25,7 +25,7 @@ const shouldModerate = (message) => {
 
 /**
  * Perform moderation on the message
- * @param {import('discord.js').Message} message
+ * @param {import("discord.js").Message} message
  */
 async function performAutomod(message, settings) {
   const { automod } = settings;
@@ -90,7 +90,7 @@ async function performAutomod(message, settings) {
         let antiScamInfo = {
           channelId: message.channelId,
           content,
-          timestamp: Date.now(),
+          timestamp: Date.now()
         };
         message.client.antiScamCache.set(key, antiScamInfo);
       }
@@ -111,7 +111,8 @@ async function performAutomod(message, settings) {
     message
       .delete()
       .then(() => sendMessage(channel, "> Auto-Moderation! Message deleted", 5))
-      .catch(() => {});
+      .catch(() => {
+      });
   }
 
   if (strikesTotal > 0) {
@@ -127,7 +128,7 @@ async function performAutomod(message, settings) {
       .setDescription(`**Channel:** ${channel.toString()}\n**Content:**\n${content}`)
       .setFooter({
         text: `By ${author.tag} | ${author.id}`,
-        iconURL: author.avatarURL(),
+        iconURL: author.avatarURL()
       });
 
     sendMessage(logChannel, { embeds: [embed] });
@@ -139,8 +140,8 @@ async function performAutomod(message, settings) {
       .setAuthor({ name: "Auto Moderation" })
       .setDescription(
         `You have received ${strikesTotal} strikes!\n\n` +
-          `**Guild:** ${message.guild.name}\n` +
-          `**Total Strikes:** ${memberDb.strikes} out of ${automod.strikes}`
+        `**Guild:** ${message.guild.name}\n` +
+        `**Total Strikes:** ${memberDb.strikes} out of ${automod.strikes}`
       );
     embed.fields.forEach((field) => strikeEmbed.addField(field.name, field.value, true));
     safeDM(message.author, { embeds: [strikeEmbed] });
@@ -156,5 +157,5 @@ async function performAutomod(message, settings) {
 }
 
 module.exports = {
-  performAutomod,
+  performAutomod
 };

@@ -15,7 +15,7 @@ module.exports = class Timeout extends Command {
         enabled: true,
         aliases: ["mute"],
         usage: "<ID|@member> <minutes> [reason]",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -24,22 +24,22 @@ module.exports = class Timeout extends Command {
             name: "user",
             description: "the target member",
             type: "USER",
-            required: true,
+            required: true
           },
           {
             name: "minutes",
             description: "the time to timeout the member for",
             type: "INTEGER",
-            required: true,
+            required: true
           },
           {
             name: "reason",
             description: "reason for timeout",
             type: "STRING",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

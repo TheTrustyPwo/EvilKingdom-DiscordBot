@@ -10,12 +10,12 @@ class BaseContext {
    * @property {boolean} [enabled] - Whether the slash command is enabled or not
    * @property {boolean} [ephemeral] - Whether the reply should be ephemeral
    * @property {boolean} [defaultPermission] - Whether default permission must be enabled
-   * @property {import('discord.js').PermissionResolvable[]} [userPermissions] - Permissions required by the user to use the command.
+   * @property {import("discord.js").PermissionResolvable[]} [userPermissions] - Permissions required by the user to use the command.
    * @property {number} [cooldown] - Command cooldown in seconds
    */
 
   /**
-   * @param {import('discord.js').Client} client - The discord client
+   * @param {import("discord.js").Client} client - The discord client
    * @param {ContextData} data - The context information
    */
   constructor(client, data) {
@@ -33,68 +33,8 @@ class BaseContext {
   }
 
   /**
-   * @param {import('discord.js').ContextMenuInteraction} interaction
-   */
-  async execute(interaction) {
-    if (this.cooldown > 0) {
-      const remaining = this.getRemainingCooldown(interaction.user.id);
-      if (remaining > 0) {
-        return interaction.reply({
-          content: `You are on cooldown. You can again use the command after ${timeformat(remaining)}`,
-          ephemeral: true,
-        });
-      }
-    }
-
-    if (interaction.member && this.userPermissions.length > 0) {
-      if (!interaction.member.permissions.has(this.userPermissions)) {
-        return interaction.reply({
-          content: `You need ${parsePermissions(this.userPermissions)} for this command`,
-          ephemeral: true,
-        });
-      }
-    }
-
-    try {
-      await interaction.deferReply({ ephemeral: this.ephemeral });
-      await this.run(interaction);
-    } catch (ex) {
-      interaction.followUp("Oops! An error occurred while running the command");
-      this.client.logger.error("contextRun", ex);
-    } finally {
-      this.applyCooldown(interaction.user.id);
-    }
-  }
-
-  /**
-   * Get remaining cooldown for the user
-   * @param {string} userId
-   */
-  getRemainingCooldown(userId) {
-    const key = this.name + "|" + userId;
-    if (this.client.ctxCooldownCache.has(key)) {
-      const remaining = (Date.now() - this.client.ctxCooldownCache.get(key)) * 0.001;
-      if (remaining > this.cooldown) {
-        this.client.ctxCooldownCache.delete(key);
-        return 0;
-      }
-      return this.cooldown - remaining;
-    }
-    return 0;
-  }
-
-  /**
-   * Apply cooldown to the user
-   * @param {string} memberId
-   */
-  applyCooldown(memberId) {
-    const key = this.name + "|" + memberId;
-    this.client.ctxCooldownCache.set(key, Date.now());
-  }
-
-  /**
    * Validates constructor parameters
-   * @param {import('discord.js').Client} client
+   * @param {import("discord.js").Client} client
    * @param {ContextData} data
    * @private
    */
@@ -135,6 +75,66 @@ class BaseContext {
         if (!permissions[perm]) throw new RangeError(`Invalid command userPermission: ${perm}`);
       }
     }
+  }
+
+  /**
+   * @param {import("discord.js").ContextMenuInteraction} interaction
+   */
+  async execute(interaction) {
+    if (this.cooldown > 0) {
+      const remaining = this.getRemainingCooldown(interaction.user.id);
+      if (remaining > 0) {
+        return interaction.reply({
+          content: `You are on cooldown. You can again use the command after ${timeformat(remaining)}`,
+          ephemeral: true
+        });
+      }
+    }
+
+    if (interaction.member && this.userPermissions.length > 0) {
+      if (!interaction.member.permissions.has(this.userPermissions)) {
+        return interaction.reply({
+          content: `You need ${parsePermissions(this.userPermissions)} for this command`,
+          ephemeral: true
+        });
+      }
+    }
+
+    try {
+      await interaction.deferReply({ ephemeral: this.ephemeral });
+      await this.run(interaction);
+    } catch (ex) {
+      interaction.followUp("Oops! An error occurred while running the command");
+      this.client.logger.error("contextRun", ex);
+    } finally {
+      this.applyCooldown(interaction.user.id);
+    }
+  }
+
+  /**
+   * Get remaining cooldown for the user
+   * @param {string} userId
+   */
+  getRemainingCooldown(userId) {
+    const key = this.name + "|" + userId;
+    if (this.client.ctxCooldownCache.has(key)) {
+      const remaining = (Date.now() - this.client.ctxCooldownCache.get(key)) * 0.001;
+      if (remaining > this.cooldown) {
+        this.client.ctxCooldownCache.delete(key);
+        return 0;
+      }
+      return this.cooldown - remaining;
+    }
+    return 0;
+  }
+
+  /**
+   * Apply cooldown to the user
+   * @param {string} memberId
+   */
+  applyCooldown(memberId) {
+    const key = this.name + "|" + memberId;
+    this.client.ctxCooldownCache.set(key, Date.now());
   }
 }
 

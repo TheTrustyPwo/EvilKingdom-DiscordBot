@@ -16,7 +16,7 @@ module.exports = class AddReactionRole extends Command {
       command: {
         enabled: true,
         usage: "<#channel> <messageid> <emote> <role>",
-        minArgsCount: 4,
+        minArgsCount: 4
       },
       slashCommand: {
         enabled: true,
@@ -27,28 +27,28 @@ module.exports = class AddReactionRole extends Command {
             description: "channel where the message exists",
             type: "CHANNEL",
             channelTypes: ["GUILD_TEXT"],
-            required: true,
+            required: true
           },
           {
             name: "message_id",
             description: "message id to which reaction roles must be configured",
             type: "STRING",
-            required: true,
+            required: true
           },
           {
             name: "emoji",
             description: "emoji to use",
             type: "STRING",
-            required: true,
+            required: true
           },
           {
             name: "role",
             description: "role to be given for the selected emoji",
             type: "ROLE",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

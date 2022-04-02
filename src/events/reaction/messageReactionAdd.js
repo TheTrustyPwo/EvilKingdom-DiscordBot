@@ -3,9 +3,9 @@ const { getSettings } = require("@schemas/Guild");
 const { getCountryFromFlag } = require("@utils/miscUtils");
 
 /**
- * @param {import('@src/structures').BotClient} client
- * @param {import('discord.js').MessageReaction|import('discord.js').PartialMessageReaction} reaction
- * @param {import('discord.js').User|import('discord.js').PartialUser} user
+ * @param {import("@src/structures").BotClient} client
+ * @param {import("discord.js").MessageReaction|import("discord.js").PartialMessageReaction} reaction
+ * @param {import("discord.js").User|import("discord.js").PartialUser} user
  */
 module.exports = async (client, reaction, user) => {
   if (reaction.partial) {

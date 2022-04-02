@@ -45,5 +45,5 @@ async function handleTicketClose(interaction) {
 
 module.exports = {
   handleTicketOpen,
-  handleTicketClose,
+  handleTicketClose
 };

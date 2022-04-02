@@ -14,8 +14,8 @@ module.exports = class PurgeLinks extends Command {
       command: {
         enabled: true,
         usage: "[amount]",
-        aliases: ["purgelink"],
-      },
+        aliases: ["purgelink"]
+      }
     });
   }
 

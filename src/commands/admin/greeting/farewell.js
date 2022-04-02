@@ -19,33 +19,33 @@ module.exports = class Farewell extends Command {
         subcommands: [
           {
             trigger: "status <on|off>",
-            description: "enable or disable farewell message",
+            description: "enable or disable farewell message"
           },
           {
             trigger: "channel <#channel>",
-            description: "configure farewell message",
+            description: "configure farewell message"
           },
           {
             trigger: "preview",
-            description: "preview the configured farewell message",
+            description: "preview the configured farewell message"
           },
           {
             trigger: "desc <text>",
-            description: "set embed description",
+            description: "set embed description"
           },
           {
             trigger: "thumbnail <ON|OFF>",
-            description: "enable/disable embed thumbnail",
+            description: "enable/disable embed thumbnail"
           },
           {
             trigger: "color <hexcolor>",
-            description: "set embed color",
+            description: "set embed color"
           },
           {
             trigger: "footer <text>",
-            description: "set embed footer content",
-          },
-        ],
+            description: "set embed footer content"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -64,20 +64,20 @@ module.exports = class Farewell extends Command {
                 choices: [
                   {
                     name: "ON",
-                    value: "ON",
+                    value: "ON"
                   },
                   {
                     name: "OFF",
-                    value: "OFF",
-                  },
-                ],
-              },
-            ],
+                    value: "OFF"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "preview",
             description: "preview the configured farewell message",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "channel",
@@ -89,9 +89,9 @@ module.exports = class Farewell extends Command {
                 description: "channel name",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "desc",
@@ -102,9 +102,9 @@ module.exports = class Farewell extends Command {
                 name: "content",
                 description: "description content",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "thumbnail",
@@ -119,15 +119,15 @@ module.exports = class Farewell extends Command {
                 choices: [
                   {
                     name: "ON",
-                    value: "ON",
+                    value: "ON"
                   },
                   {
                     name: "OFF",
-                    value: "OFF",
-                  },
-                ],
-              },
-            ],
+                    value: "OFF"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "color",
@@ -138,9 +138,9 @@ module.exports = class Farewell extends Command {
                 name: "hex-code",
                 description: "hex color code",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "footer",
@@ -151,12 +151,12 @@ module.exports = class Farewell extends Command {
                 name: "content",
                 description: "footer content",
                 type: "STRING",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

@@ -6,7 +6,7 @@ const cache = new FixedSizeMap(CACHE_SIZE.USERS);
 
 const ReqString = {
   type: String,
-  required: true,
+  required: true
 };
 
 const Schema = mongoose.Schema({
@@ -14,30 +14,37 @@ const Schema = mongoose.Schema({
   logged: Boolean,
   coins: {
     type: Number,
-    default: 0,
+    default: 0
   },
   bank: {
     type: Number,
-    default: 0,
+    default: 0
   },
   reputation: {
     received: {
       type: Number,
-      default: 0,
+      default: 0
     },
     given: {
       type: Number,
-      default: 0,
+      default: 0
     },
-    timestamp: Date,
+    timestamp: Date
   },
   daily: {
     streak: {
       type: Number,
-      default: 0,
+      default: 0
     },
-    timestamp: Date,
+    timestamp: Date
   },
+  ai: {
+    personality: {
+      1: String,
+      2: String,
+      3: String
+    }
+  }
 });
 
 const Model = mongoose.model("user", Schema);
@@ -52,5 +59,5 @@ module.exports = {
 
     cache.add(userId, user);
     return user;
-  },
+  }
 };

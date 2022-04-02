@@ -1,9 +1,9 @@
 const { MUSIC } = require("@root/config");
 
 /**
- * @param {import('@src/structures').BotClient} client
- * @param {import('discord.js').VoiceState} oldState
- * @param {import('discord.js').VoiceState} newState
+ * @param {import("@src/structures").BotClient} client
+ * @param {import("discord.js").VoiceState} oldState
+ * @param {import("discord.js").VoiceState} newState
  */
 module.exports = async (client, oldState, newState) => {
   const guild = oldState.guild;

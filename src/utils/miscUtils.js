@@ -110,5 +110,5 @@ module.exports = {
   timeformat,
   durationToMillis,
   getRemainingTime,
-  getCountryFromFlag,
+  getCountryFromFlag
 };

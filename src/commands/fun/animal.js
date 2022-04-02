@@ -17,7 +17,7 @@ module.exports = class AnimalCommand extends Command {
       command: {
         enabled: true,
         usage: "<type>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -27,10 +27,10 @@ module.exports = class AnimalCommand extends Command {
             description: "animal type",
             type: "STRING",
             required: true,
-            choices: animals.map((animal) => ({ name: animal, value: animal })),
-          },
-        ],
-      },
+            choices: animals.map((animal) => ({ name: animal, value: animal }))
+          }
+        ]
+      }
     });
   }
 

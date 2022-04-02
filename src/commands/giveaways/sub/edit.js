@@ -1,5 +1,5 @@
 /**
- * @param {import('discord.js').GuildMember} member
+ * @param {import("discord.js").GuildMember} member
  * @param {string} messageId
  * @param {number} addDuration
  * @param {string} newPrize
@@ -25,7 +25,7 @@ module.exports = async (member, messageId, addDuration, newPrize, newWinnerCount
     await member.client.giveawaysManager.edit(messageId, {
       addTime: 60000 * addDuration || 0,
       newPrize: newPrize || giveaway.prize,
-      newWinnerCount: newWinnerCount || giveaway.winnerCount,
+      newWinnerCount: newWinnerCount || giveaway.winnerCount
     });
 
     return `Successfully updated the giveaway!`;

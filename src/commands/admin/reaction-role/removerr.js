@@ -16,7 +16,7 @@ module.exports = class RemoveReactionRole extends Command {
       command: {
         enabled: true,
         usage: "<#channel> <messageid>",
-        minArgsCount: 2,
+        minArgsCount: 2
       },
       slashCommand: {
         enabled: true,
@@ -27,16 +27,16 @@ module.exports = class RemoveReactionRole extends Command {
             description: "channel where the message exists",
             type: "CHANNEL",
             channelTypes: ["GUILD_TEXT"],
-            required: true,
+            required: true
           },
           {
             name: "message_id",
             description: "message id for which reaction roles was configured",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

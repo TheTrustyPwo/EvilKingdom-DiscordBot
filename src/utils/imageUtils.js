@@ -67,5 +67,5 @@ function getFilter(filter, image) {
 module.exports = {
   getImageFromCommand,
   getGenerator,
-  getFilter,
+  getFilter
 };

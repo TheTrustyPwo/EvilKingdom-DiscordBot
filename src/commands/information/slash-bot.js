@@ -12,7 +12,7 @@ module.exports = class BotCommand extends Command {
       category: "INFORMATION",
       botPermissions: ["EMBED_LINKS"],
       command: {
-        enabled: false,
+        enabled: false
       },
       slashCommand: {
         enabled: true,
@@ -20,20 +20,20 @@ module.exports = class BotCommand extends Command {
           {
             name: "invite",
             description: "get bot's invite",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "stats",
             description: "get bot's statistics",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "uptime",
             description: "get bot's uptime",
-            type: "SUB_COMMAND",
-          },
-        ],
-      },
+            type: "SUB_COMMAND"
+          }
+        ]
+      }
     });
   }
 

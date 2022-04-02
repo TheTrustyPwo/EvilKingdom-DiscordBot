@@ -14,7 +14,7 @@ module.exports = class BigEmoji extends Command {
         enabled: true,
         usage: "<emoji>",
         aliases: ["enlarge"],
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -23,10 +23,10 @@ module.exports = class BigEmoji extends Command {
             name: "emoji",
             description: "emoji to enlarge",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

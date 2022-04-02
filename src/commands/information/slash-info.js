@@ -15,7 +15,7 @@ module.exports = class InfoCommand extends Command {
       category: "INFORMATION",
       botPermissions: ["EMBED_LINKS"],
       command: {
-        enabled: false,
+        enabled: false
       },
       slashCommand: {
         enabled: true,
@@ -29,9 +29,9 @@ module.exports = class InfoCommand extends Command {
                 name: "name",
                 description: "name of the user",
                 type: "USER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "channel",
@@ -42,19 +42,19 @@ module.exports = class InfoCommand extends Command {
                 name: "name",
                 description: "name of the channel",
                 type: "CHANNEL",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "guild",
             description: "get guild information",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "bot",
             description: "get bot information",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "avatar",
@@ -65,9 +65,9 @@ module.exports = class InfoCommand extends Command {
                 name: "name",
                 description: "name of the user",
                 type: "USER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "emoji",
@@ -78,12 +78,12 @@ module.exports = class InfoCommand extends Command {
                 name: "name",
                 description: "name of the emoji",
                 type: "STRING",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

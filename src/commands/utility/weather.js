@@ -16,7 +16,7 @@ module.exports = class WeatherCommand extends Command {
       command: {
         enabled: true,
         usage: "<place>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -25,10 +25,10 @@ module.exports = class WeatherCommand extends Command {
             name: "place",
             description: "country/city name to get weather information for",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

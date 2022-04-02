@@ -65,8 +65,8 @@ async function startupCheck() {
 }
 
 /**
- * @param {import('discord.js').TextBasedChannels} channel
- * @param {string|import('discord.js').MessagePayload|import('discord.js').MessageOptions} content
+ * @param {import("discord.js").TextBasedChannels} channel
+ * @param {string|import("discord.js").MessagePayload|import("discord.js").MessageOptions} content
  * @param {number} [seconds]
  */
 async function sendMessage(channel, content, seconds) {
@@ -77,15 +77,16 @@ async function sendMessage(channel, content, seconds) {
   try {
     if (!seconds) return await channel.send(content);
     const reply = await channel.send(content);
-    setTimeout(() => reply.deletable && reply.delete().catch((ex) => {}), seconds * 1000);
+    setTimeout(() => reply.deletable && reply.delete().catch((ex) => {
+    }), seconds * 1000);
   } catch (ex) {
     error(`sendMessage`, ex);
   }
 }
 
 /**
- * @param {import('discord.js').User} user
- * @param {string|import('discord.js').MessagePayload|import('discord.js').MessageOptions} message
+ * @param {import("discord.js").User} user
+ * @param {string|import("discord.js").MessagePayload|import("discord.js").MessageOptions} message
  * @param {number} [seconds]
  */
 async function safeDM(user, message, seconds) {
@@ -94,7 +95,8 @@ async function safeDM(user, message, seconds) {
     const dm = await user.createDM();
     if (!seconds) return await dm.send(message);
     const reply = await dm.send(message);
-    setTimeout(() => reply.deletable && reply.delete().catch((ex) => {}), seconds * 1000);
+    setTimeout(() => reply.deletable && reply.delete().catch((ex) => {
+    }), seconds * 1000);
   } catch (ex) {
     /** Ignore */
   }
@@ -140,7 +142,7 @@ const permissions = {
   USE_EXTERNAL_STICKERS: "Use External Stickers",
   SEND_MESSAGES_IN_THREADS: "Send Messages In Threads",
   START_EMBEDDED_ACTIVITIES: "Start Embedded Activities",
-  MODERATE_MEMBERS: "Moderate Members",
+  MODERATE_MEMBERS: "Moderate Members"
 };
 
 /**
@@ -154,17 +156,17 @@ const parsePermissions = (perms) => {
 const musicValidations = [
   {
     callback: ({ client, guildId }) => client.musicManager.get(guildId),
-    message: "🚫 No music is being played!",
+    message: "🚫 No music is being played!"
   },
   {
     callback: ({ member }) => member.voice?.channelId,
-    message: "🚫 You need to join my voice channel.",
+    message: "🚫 You need to join my voice channel."
   },
   {
     callback: ({ member, client, guildId }) =>
       member.voice?.channelId === client.musicManager.get(guildId).voiceChannel,
-    message: "🚫 You're not in the same voice channel.",
-  },
+    message: "🚫 You're not in the same voice channel."
+  }
 ];
 
 module.exports = {
@@ -173,5 +175,5 @@ module.exports = {
   sendMessage,
   safeDM,
   startupCheck,
-  musicValidations,
+  musicValidations
 };

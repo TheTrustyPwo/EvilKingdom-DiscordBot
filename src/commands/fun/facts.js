@@ -18,7 +18,7 @@ module.exports = class FactCommand extends Command {
         enabled: true,
         usage: "<animal>",
         aliases: ["fact"],
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -28,10 +28,10 @@ module.exports = class FactCommand extends Command {
             description: "animal type",
             type: "STRING",
             required: true,
-            choices: animals.map((animal) => ({ name: animal, value: animal })),
-          },
-        ],
-      },
+            choices: animals.map((animal) => ({ name: animal, value: animal }))
+          }
+        ]
+      }
     });
   }
 

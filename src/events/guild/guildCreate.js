@@ -2,8 +2,8 @@ const { MessageEmbed } = require("discord.js");
 const { getSettings: registerGuild } = require("@schemas/Guild");
 
 /**
- * @param {import('@src/structures').BotClient} client
- * @param {import('discord.js').Guild} guild
+ * @param {import("@src/structures").BotClient} client
+ * @param {import("discord.js").Guild} guild
  */
 module.exports = async (client, guild) => {
   if (!guild.members.cache.has(guild.ownerId)) await guild.fetchOwner({ cache: true });
@@ -25,6 +25,6 @@ module.exports = async (client, guild) => {
   client.joinLeaveWebhook.send({
     username: "Join",
     avatarURL: client.user.displayAvatarURL(),
-    embeds: [embed],
+    embeds: [embed]
   });
 };

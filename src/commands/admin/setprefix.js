@@ -12,7 +12,7 @@ module.exports = class SetPrefix extends Command {
       command: {
         enabled: true,
         usage: "<new-prefix>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -22,10 +22,10 @@ module.exports = class SetPrefix extends Command {
             name: "newprefix",
             description: "the new prefix to set",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

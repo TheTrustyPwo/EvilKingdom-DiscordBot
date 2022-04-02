@@ -19,13 +19,13 @@ module.exports = class Reputation extends Command {
         subcommands: [
           {
             trigger: "view [user]",
-            description: "view reputation for a user",
+            description: "view reputation for a user"
           },
           {
             trigger: "give [user]",
-            description: "give reputation to a user",
-          },
-        ],
+            description: "give reputation to a user"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -39,9 +39,9 @@ module.exports = class Reputation extends Command {
                 name: "user",
                 description: "the user to check reputation for",
                 type: "USER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "give",
@@ -52,12 +52,12 @@ module.exports = class Reputation extends Command {
                 name: "user",
                 description: "the user to check reputation for",
                 type: "USER",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

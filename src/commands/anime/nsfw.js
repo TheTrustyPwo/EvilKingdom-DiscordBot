@@ -28,7 +28,7 @@ const choices = [
   "pussyWankGif",
   "pussyArt",
   "spank",
-  "yuri",
+  "yuri"
 ];
 
 module.exports = class NSFW extends Command {
@@ -42,12 +42,12 @@ module.exports = class NSFW extends Command {
       validations: [
         {
           callback: ({ channel }) => channel?.nsfw,
-          message: "This command can only be used in nsfw channel",
-        },
+          message: "This command can only be used in nsfw channel"
+        }
       ],
       command: {
         enabled: true,
-        usage: "nsfw [category]",
+        usage: "nsfw [category]"
       },
       slashCommand: {
         enabled: true,
@@ -57,10 +57,10 @@ module.exports = class NSFW extends Command {
             description: "nsfw category",
             type: "STRING",
             required: false,
-            choices: choices.map((ch) => ({ name: ch, value: ch })),
-          },
-        ],
-      },
+            choices: choices.map((ch) => ({ name: ch, value: ch }))
+          }
+        ]
+      }
     });
   }
 

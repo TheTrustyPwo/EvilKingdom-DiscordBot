@@ -16,7 +16,7 @@ module.exports = class InviterCommand extends Command {
       botPermissions: ["EMBED_LINKS"],
       command: {
         enabled: true,
-        usage: "[@member|id]",
+        usage: "[@member|id]"
       },
       slashCommand: {
         enabled: true,
@@ -25,10 +25,10 @@ module.exports = class InviterCommand extends Command {
             name: "user",
             description: "the user to get the inviter information for",
             type: "USER",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

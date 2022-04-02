@@ -15,13 +15,13 @@ async function getJson(url) {
     return {
       success: response.status === 200 ? true : false,
       status: response.status,
-      data: json,
+      data: json
     };
   } catch (ex) {
     debug(`Url: ${url}`);
     error(`getJson`, ex);
     return {
-      success: false,
+      success: false
     };
   }
 }
@@ -37,13 +37,13 @@ async function getBuffer(url) {
     return {
       success: response.status === 200 ? true : false,
       status: response.status,
-      buffer,
+      buffer
     };
   } catch (ex) {
     debug(`Url: ${url}`);
     error(`getBuffer`, ex);
     return {
-      success: false,
+      success: false
     };
   }
 }
@@ -62,7 +62,7 @@ async function translate(content, outputCode) {
       inputCode: response.from.language.iso,
       outputCode,
       inputLang: ISO6391.getName(response.from.language.iso),
-      outputLang: ISO6391.getName(outputCode),
+      outputLang: ISO6391.getName(outputCode)
     };
   } catch (ex) {
     error("translate", ex);
@@ -82,18 +82,18 @@ async function postToBin(content, title) {
         {
           name: " ",
           content,
-          languageId: "text",
-        },
+          languageId: "text"
+        }
       ],
       {
         title,
-        description: " ",
+        description: " "
       }
     );
     return {
       url: response.url,
       short: response.short,
-      raw: `https://cdn.sourceb.in/bins/${response.key}/0`,
+      raw: `https://cdn.sourceb.in/bins/${response.key}/0`
     };
   } catch (ex) {
     error(`postToBin`, ex);
@@ -104,5 +104,5 @@ module.exports = {
   translate,
   postToBin,
   getJson,
-  getBuffer,
+  getBuffer
 };

@@ -24,33 +24,33 @@ module.exports = class Giveaway extends Command {
         subcommands: [
           {
             trigger: "start",
-            description: "start an interactive giveaway setup",
+            description: "start an interactive giveaway setup"
           },
           {
             trigger: "pause <messageId>",
-            description: "pause a giveaway",
+            description: "pause a giveaway"
           },
           {
             trigger: "resume <messageId>",
-            description: "resume a paused giveaway",
+            description: "resume a paused giveaway"
           },
           {
             trigger: "end <messageId>",
-            description: "end a giveaway",
+            description: "end a giveaway"
           },
           {
             trigger: "reroll <messageId>",
-            description: "reroll a giveaway",
+            description: "reroll a giveaway"
           },
           {
             trigger: "list",
-            description: "list all giveaways",
+            description: "list all giveaways"
           },
           {
             trigger: "edit",
-            description: "edit a giveaway",
-          },
-        ],
+            description: "edit a giveaway"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -66,33 +66,33 @@ module.exports = class Giveaway extends Command {
                 description: "the channel to start the giveaway in",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "duration",
                 description: "the duration of the giveaway in minutes",
                 type: "INTEGER",
-                required: true,
+                required: true
               },
               {
                 name: "prize",
                 description: "the prize of the giveaway",
                 type: "STRING",
-                required: true,
+                required: true
               },
               {
                 name: "winners",
                 description: "the number of winners",
                 type: "INTEGER",
-                required: true,
+                required: true
               },
               {
                 name: "host",
                 description: "the host of the giveaway",
                 type: "USER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "pause",
@@ -103,9 +103,9 @@ module.exports = class Giveaway extends Command {
                 name: "message_id",
                 description: "the message id of the giveaway",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "resume",
@@ -116,9 +116,9 @@ module.exports = class Giveaway extends Command {
                 name: "message_id",
                 description: "the message id of the giveaway",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "end",
@@ -129,9 +129,9 @@ module.exports = class Giveaway extends Command {
                 name: "message_id",
                 description: "the message id of the giveaway",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "reroll",
@@ -142,14 +142,14 @@ module.exports = class Giveaway extends Command {
                 name: "message_id",
                 description: "the message id of the giveaway",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "list",
             description: "list all giveaways",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "edit",
@@ -160,30 +160,30 @@ module.exports = class Giveaway extends Command {
                 name: "message_id",
                 description: "the message id of the giveaway",
                 type: "STRING",
-                required: true,
+                required: true
               },
               {
                 name: "add_duration",
                 description: "the number of minutes to add to the giveaway duration",
                 type: "INTEGER",
-                required: false,
+                required: false
               },
               {
                 name: "new_prize",
                 description: "the new prize",
                 type: "STRING",
-                required: false,
+                required: false
               },
               {
                 name: "new_winners",
                 description: "the new number of winners",
                 type: "INTEGER",
-                required: false,
-              },
-            ],
-          },
-        ],
-      },
+                required: false
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 
@@ -423,7 +423,7 @@ async function runInteractiveEdit(message) {
       return reply;
     } catch (err) {
       await channel.send({
-        embeds: [embed.setDescription("No response received. Giveaway update has been cancelled")],
+        embeds: [embed.setDescription("No response received. Giveaway update has been cancelled")]
       });
       return false;
     }

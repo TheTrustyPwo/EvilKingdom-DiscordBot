@@ -16,8 +16,8 @@ module.exports = class PurgeUser extends Command {
         enabled: true,
         usage: "<@user|ID> [amount]",
         aliases: ["purgeusers"],
-        minArgsCount: 1,
-      },
+        minArgsCount: 1
+      }
     });
   }
 

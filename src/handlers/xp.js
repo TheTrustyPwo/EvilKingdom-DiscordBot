@@ -47,5 +47,5 @@ async function handleXp(message) {
 }
 
 module.exports = {
-  handleXp,
+  handleXp
 };

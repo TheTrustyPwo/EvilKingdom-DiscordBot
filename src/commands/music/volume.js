@@ -11,7 +11,7 @@ module.exports = class Volume extends Command {
       validations: musicValidations,
       command: {
         enabled: true,
-        usage: "<1-100>",
+        usage: "<1-100>"
       },
       slashCommand: {
         enabled: true,
@@ -20,10 +20,10 @@ module.exports = class Volume extends Command {
             name: "amount",
             description: "Enter a value to set [0 to 100]",
             type: "INTEGER",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

@@ -13,7 +13,7 @@ module.exports = class Search extends Command {
       command: {
         enabled: true,
         usage: "<song-name>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -22,10 +22,10 @@ module.exports = class Search extends Command {
             name: "query",
             description: "song to search",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 
@@ -63,7 +63,7 @@ async function search({ member, guild, channel }, user, query) {
       guild: guild.id,
       textChannel: channel.id,
       voiceChannel: member.voice.channel.id,
-      volume: 50,
+      volume: 50
     });
   } catch (ex) {
     if (ex.message === "No available nodes.") {
@@ -134,7 +134,7 @@ async function search({ member, guild, channel }, user, query) {
       const results = res.tracks.slice(0, max);
       const options = results.map((result, index) => ({
         label: result.title,
-        value: index.toString(),
+        value: index.toString()
       }));
 
       const menuRow = new MessageActionRow().addComponents(
@@ -149,13 +149,13 @@ async function search({ member, guild, channel }, user, query) {
 
       const sentMsg = await channel.send({
         embeds: [embed],
-        components: [menuRow],
+        components: [menuRow]
       });
 
       const collector = channel.createMessageComponentCollector({
         filter: (reactor) => reactor.user.id === user.id,
         idle: 30 * 1000,
-        dispose: true,
+        dispose: true
       });
 
       collector.on("collect", async (response) => {
@@ -171,7 +171,7 @@ async function search({ member, guild, channel }, user, query) {
             await sentMsg.edit({
               content: "> 🎶 Adding song to queue",
               embeds: [],
-              components: [],
+              components: []
             });
             return player.play();
           }

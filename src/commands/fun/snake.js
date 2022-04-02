@@ -11,11 +11,11 @@ module.exports = class SnakeCommand extends Command {
       category: "FUN",
       botPermissions: ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS", "READ_MESSAGE_HISTORY", "MANAGE_MESSAGES"],
       command: {
-        enabled: true,
+        enabled: true
       },
       slashCommand: {
-        enabled: true,
-      },
+        enabled: true
+      }
     });
   }
 
@@ -42,7 +42,7 @@ async function startSnakeGame(data) {
     title: "Snake Game",
     color: "BLUE",
     timestamp: true,
-    gameOverTitle: "Game Over",
+    gameOverTitle: "Game Over"
   });
 
   await snakeGame.newGame(data);

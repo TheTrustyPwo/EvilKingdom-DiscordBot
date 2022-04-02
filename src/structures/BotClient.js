@@ -19,13 +19,13 @@ module.exports = class BotClient extends Client {
         Intents.FLAGS.GUILD_MEMBERS,
         Intents.FLAGS.GUILD_PRESENCES,
         Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Intents.FLAGS.GUILD_VOICE_STATES,
+        Intents.FLAGS.GUILD_VOICE_STATES
       ],
       partials: ["USER", "MESSAGE", "REACTION"],
       allowedMentions: {
-        repliedUser: false,
+        repliedUser: false
       },
-      restRequestTimeout: 20000,
+      restRequestTimeout: 20000
     });
 
     this.config = require("@root/config"); // load the config file
@@ -79,7 +79,7 @@ module.exports = class BotClient extends Client {
     await mongoose.connect(process.env.MONGO_CONNECTION, {
       keepAlive: true,
       useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useUnifiedTopology: true
     });
 
     this.logger.success("Mongoose: Database connection established");
@@ -154,10 +154,10 @@ module.exports = class BotClient extends Client {
       table(clientEvents, {
         header: {
           alignment: "center",
-          content: "Client Events",
+          content: "Client Events"
         },
         singleLine: true,
-        columns: [{ width: 25 }, { width: 5, alignment: "center" }],
+        columns: [{ width: 25 }, { width: 5, alignment: "center" }]
       })
     );
 
@@ -165,10 +165,10 @@ module.exports = class BotClient extends Client {
       table(musicEvents, {
         header: {
           alignment: "center",
-          content: "Music Events",
+          content: "Music Events"
         },
         singleLine: true,
-        columns: [{ width: 25 }, { width: 5, alignment: "center" }],
+        columns: [{ width: 25 }, { width: 5, alignment: "center" }]
       })
     );
 
@@ -280,7 +280,7 @@ module.exports = class BotClient extends Client {
           name: cmd.name,
           description: cmd.description,
           type: "CHAT_INPUT",
-          options: cmd.slashCommand.options,
+          options: cmd.slashCommand.options
         }))
         .forEach((s) => toRegister.push(s));
     }
@@ -290,7 +290,7 @@ module.exports = class BotClient extends Client {
       this.contextMenus
         .map((ctx) => ({
           name: ctx.name,
-          type: ctx.type,
+          type: ctx.type
         }))
         .forEach((c) => toRegister.push(c));
     }
@@ -342,8 +342,8 @@ module.exports = class BotClient extends Client {
         "SEND_MESSAGES",
         "SEND_MESSAGES_IN_THREADS",
         "SPEAK",
-        "VIEW_CHANNEL",
-      ],
+        "VIEW_CHANNEL"
+      ]
     });
   }
 };

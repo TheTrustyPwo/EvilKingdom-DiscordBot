@@ -16,7 +16,7 @@ module.exports = class AddInvitesCommand extends Command {
       command: {
         enabled: true,
         usage: "<@member|id> <invites>",
-        minArgsCount: 2,
+        minArgsCount: 2
       },
       slashCommand: {
         enabled: true,
@@ -25,16 +25,16 @@ module.exports = class AddInvitesCommand extends Command {
             name: "user",
             description: "the user to give invites to",
             type: "USER",
-            required: true,
+            required: true
           },
           {
             name: "invites",
             description: "the number of invites to give",
             type: "INTEGER",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

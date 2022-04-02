@@ -1,10 +1,10 @@
 /**
- * @param {import('discord.js').GuildMember} member
- * @param {import('discord.js').GuildTextBasedChannel} giveawayChannel
+ * @param {import("discord.js").GuildMember} member
+ * @param {import("discord.js").GuildTextBasedChannel} giveawayChannel
  * @param {number} duration
  * @param {string} prize
  * @param {number} winners
- * @param {import('discord.js').User} host
+ * @param {import("discord.js").User} host
  */
 module.exports = async (member, giveawayChannel, duration, prize, winners, host) => {
   if (!member.permissions.has("MANAGE_MESSAGES")) {
@@ -27,8 +27,8 @@ module.exports = async (member, giveawayChannel, duration, prize, winners, host)
         giveawayEnded: "🎉 **GIVEAWAY ENDED** 🎉",
         inviteToParticipate: "React with 🎁 to enter",
         dropMessage: "Be the first to react with 🎁 to win!",
-        hostedBy: "\nHosted by:",
-      },
+        hostedBy: "\nHosted by:"
+      }
     });
 
     return `Giveaway started in ${giveawayChannel}`;

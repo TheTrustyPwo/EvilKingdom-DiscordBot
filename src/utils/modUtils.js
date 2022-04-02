@@ -14,8 +14,8 @@ const { addModLogToDb } = require("@schemas/ModLog");
 const DEFAULT_TIMEOUT_DAYS = 7;
 
 /**
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  */
 function memberInteract(issuer, target) {
   const { guild } = issuer;
@@ -25,8 +25,8 @@ function memberInteract(issuer, target) {
 }
 
 /**
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  * @param {"MUTE"|"KICK"|"SOFTBAN"|"BAN"} action
  */
@@ -48,8 +48,8 @@ async function addModAction(issuer, target, reason, action) {
 
 /**
  * Send logs to the configured channel and stores in the database
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  * @param {string} type
  * @param {Object} data
@@ -139,8 +139,8 @@ async function logModeration(issuer, target, reason, type, data = {}) {
 
 /**
  * Delete the specified number of messages matching the type
- * @param {import('discord.js').import('discord.js').GuildMember} issuer
- * @param {import('discord.js').BaseGuildTextChannel} channel
+ * @param {import("discord.js").import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").BaseGuildTextChannel} channel
  * @param {"ATTACHMENT"|"BOT"|"LINK"|"TOKEN"|"USER"|"ALL"} type
  * @param {Number} amount
  */
@@ -193,7 +193,7 @@ async function purgeMessages(issuer, channel, type, amount, argument) {
     await logModeration(issuer, "", "", "Purge", {
       purgeType: type,
       channel: channel,
-      deletedCount: deletedMessages.size,
+      deletedCount: deletedMessages.size
     });
 
     return deletedMessages.size;
@@ -205,8 +205,8 @@ async function purgeMessages(issuer, channel, type, amount, argument) {
 
 /**
  * warns the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function warnTarget(issuer, target, reason) {
@@ -235,8 +235,8 @@ async function warnTarget(issuer, target, reason) {
 
 /**
  * Timeouts(aka mutes) the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {number} minutes
  * @param {string} reason
  */
@@ -257,8 +257,8 @@ async function timeoutTarget(issuer, target, minutes, reason) {
 
 /**
  * UnTimeouts(aka mutes) the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {number} minutes
  * @param {string} reason
  */
@@ -279,8 +279,8 @@ async function unTimeoutTarget(issuer, target, reason) {
 
 /**
  * kicks the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function kickTarget(issuer, target, reason) {
@@ -299,8 +299,8 @@ async function kickTarget(issuer, target, reason) {
 
 /**
  * Softbans the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function softbanTarget(issuer, target, reason) {
@@ -320,8 +320,8 @@ async function softbanTarget(issuer, target, reason) {
 
 /**
  * Bans the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function banTarget(issuer, target, reason) {
@@ -340,8 +340,8 @@ async function banTarget(issuer, target, reason) {
 
 /**
  * Voice mutes the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function vMuteTarget(issuer, target, reason) {
@@ -363,8 +363,8 @@ async function vMuteTarget(issuer, target, reason) {
 
 /**
  * Voice unmutes the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function vUnmuteTarget(issuer, target, reason) {
@@ -386,8 +386,8 @@ async function vUnmuteTarget(issuer, target, reason) {
 
 /**
  * Deafens the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function deafenTarget(issuer, target, reason) {
@@ -409,8 +409,8 @@ async function deafenTarget(issuer, target, reason) {
 
 /**
  * UnDeafens the target and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function unDeafenTarget(issuer, target, reason) {
@@ -432,8 +432,8 @@ async function unDeafenTarget(issuer, target, reason) {
 
 /**
  * Disconnects the target from voice channel and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
  */
 async function disconnectTarget(issuer, target, reason) {
@@ -454,10 +454,10 @@ async function disconnectTarget(issuer, target, reason) {
 
 /**
  * Moves the target to another voice channel and logs to the database, channel
- * @param {import('discord.js').GuildMember} issuer
- * @param {import('discord.js').GuildMember} target
+ * @param {import("discord.js").GuildMember} issuer
+ * @param {import("discord.js").GuildMember} target
  * @param {string} reason
- * @param {import('discord.js').VoiceChannel|import('discord.js').StageChannel} channel
+ * @param {import("discord.js").VoiceChannel|import("discord.js").StageChannel} channel
  */
 async function moveTarget(issuer, target, reason, channel) {
   if (!memberInteract(issuer, target)) return "MEMBER_PERM";
@@ -493,5 +493,5 @@ module.exports = {
   deafenTarget,
   unDeafenTarget,
   disconnectTarget,
-  moveTarget,
+  moveTarget
 };

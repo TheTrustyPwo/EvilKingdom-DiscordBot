@@ -12,11 +12,11 @@ module.exports = class GuildInfo extends Command {
       cooldown: 5,
       command: {
         enabled: true,
-        aliases: ["serverinfo"],
+        aliases: ["serverinfo"]
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

@@ -6,7 +6,7 @@ const {
   MessageSelectMenu,
   Message,
   MessageButton,
-  CommandInteraction,
+  CommandInteraction
 } = require("discord.js");
 
 const CMDS_PER_PAGE = 5;
@@ -22,7 +22,7 @@ module.exports = class HelpCommand extends Command {
       botPermissions: ["EMBED_LINKS"],
       command: {
         enabled: true,
-        usage: "[command]",
+        usage: "[command]"
       },
       slashCommand: {
         enabled: true,
@@ -31,10 +31,10 @@ module.exports = class HelpCommand extends Command {
             name: "command",
             description: "name of the command",
             required: false,
-            type: "STRING",
-          },
-        ],
-      },
+            type: "STRING"
+          }
+        ]
+      }
     });
   }
 
@@ -106,7 +106,7 @@ async function getHelpMenu({ client, guild }) {
       label: value.name,
       value: key,
       description: `View commands in ${value.name} category`,
-      emoji: value.emoji,
+      emoji: value.emoji
     };
     options.push(data);
   });
@@ -129,15 +129,15 @@ async function getHelpMenu({ client, guild }) {
     .setThumbnail(client.user.displayAvatarURL())
     .setDescription(
       "**About Me:**\n" +
-        `Hello I am ${guild.me.displayName}!\n` +
-        "A cool multipurpose discord bot which can serve all your needs\n\n" +
-        `**Invite Me:** [Here](${client.getInvite()})\n` +
-        `**Support Server:** [Join](${SUPPORT_SERVER})`
+      `Hello I am ${guild.me.displayName}!\n` +
+      "A cool multipurpose discord bot which can serve all your needs\n\n" +
+      `**Invite Me:** [Here](${client.getInvite()})\n` +
+      `**Support Server:** [Join](${SUPPORT_SERVER})`
     );
 
   return {
     embeds: [embed],
-    components: [menuRow, buttonsRow],
+    components: [menuRow, buttonsRow]
   };
 }
 
@@ -154,7 +154,7 @@ const waiter = (msg, userId, prefix) => {
     filter: (reactor) => reactor.user.id === userId,
     idle: IDLE_TIMEOUT * 1000,
     dispose: true,
-    time: 5 * 60 * 1000,
+    time: 5 * 60 * 1000
   });
 
   let arrEmbeds = [];
@@ -342,7 +342,7 @@ function getMsgCategoryEmbeds(client, category, prefix) {
       .setAuthor({ name: `${category} Commands` })
       .setDescription(item.join("\n"))
       .setFooter({
-        text: `page ${index + 1} of ${arrSplitted.length} | Type ${prefix}help <command> for more command information`,
+        text: `page ${index + 1} of ${arrSplitted.length} | Type ${prefix}help <command> for more command information`
       });
     arrEmbeds.push(embed);
   });

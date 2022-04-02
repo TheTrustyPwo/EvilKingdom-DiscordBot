@@ -15,13 +15,13 @@ module.exports = class MaxWarn extends Command {
         subcommands: [
           {
             trigger: "limit <number>",
-            description: "set max warnings a member can receive before taking an action",
+            description: "set max warnings a member can receive before taking an action"
           },
           {
             trigger: "action <mute|kick|ban>",
-            description: "set action to performed after receiving maximum warnings",
-          },
-        ],
+            description: "set action to performed after receiving maximum warnings"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -36,9 +36,9 @@ module.exports = class MaxWarn extends Command {
                 name: "amount",
                 description: "max number of strikes",
                 type: "INTEGER",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "action",
@@ -53,22 +53,22 @@ module.exports = class MaxWarn extends Command {
                 choices: [
                   {
                     name: "MUTE",
-                    value: "MUTE",
+                    value: "MUTE"
                   },
                   {
                     name: "KICK",
-                    value: "KICK",
+                    value: "KICK"
                   },
                   {
                     name: "BAN",
-                    value: "BAN",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
+                    value: "BAN"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

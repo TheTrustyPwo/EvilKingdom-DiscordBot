@@ -8,7 +8,7 @@ module.exports = (member) => {
   const embed = new MessageEmbed()
     .setAuthor({
       name: `User information for ${member.displayName}`,
-      iconURL: member.user.displayAvatarURL(),
+      iconURL: member.user.displayAvatarURL()
     })
     .setThumbnail(member.user.displayAvatarURL())
     .setColor(color)

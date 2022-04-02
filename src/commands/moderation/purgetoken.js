@@ -14,8 +14,8 @@ module.exports = class PurgeToken extends Command {
       command: {
         enabled: true,
         usage: "<token> [amount]",
-        minArgsCount: 1,
-      },
+        minArgsCount: 1
+      }
     });
   }
 

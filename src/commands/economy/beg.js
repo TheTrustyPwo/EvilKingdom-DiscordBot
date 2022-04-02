@@ -12,11 +12,11 @@ module.exports = class BegCommand extends Command {
       cooldown: 21600,
       botPermissions: ["EMBED_LINKS"],
       command: {
-        enabled: true,
+        enabled: true
       },
       slashCommand: {
-        enabled: true,
-      },
+        enabled: true
+      }
     });
   }
 
@@ -65,7 +65,7 @@ async function beg(user) {
     "Tanjiro",
     "ZHC",
     "The IRS",
-    "Joe Mama",
+    "Joe Mama"
   ];
 
   let amount = Math.floor(Math.random() * `${ECONOMY.MAX_BEG_AMOUNT}` + `${ECONOMY.MIN_BEG_AMOUNT}`);
@@ -78,7 +78,7 @@ async function beg(user) {
     .setAuthor({ name: `${user.username}`, iconURL: user.displayAvatarURL() })
     .setDescription(
       `**${users[Math.floor(Math.random() * users.length)]}** donated you **${amount}** ${ECONOMY.CURRENCY}\n` +
-        `**Updated Balance:** **${userDb.coins}** ${ECONOMY.CURRENCY}`
+      `**Updated Balance:** **${userDb.coins}** ${ECONOMY.CURRENCY}`
     );
 
   return { embeds: [embed] };

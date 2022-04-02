@@ -18,7 +18,7 @@ module.exports = class Reaction extends Command {
       command: {
         enabled: true,
         minArgsCount: 1,
-        usage: "[reaction]",
+        usage: "[reaction]"
       },
       slashCommand: {
         enabled: true,
@@ -28,10 +28,10 @@ module.exports = class Reaction extends Command {
             description: "reaction type",
             type: "STRING",
             required: true,
-            choices: choices.map((ch) => ({ name: ch, value: ch })),
-          },
-        ],
-      },
+            choices: choices.map((ch) => ({ name: ch, value: ch }))
+          }
+        ]
+      }
     });
   }
 

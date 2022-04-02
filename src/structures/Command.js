@@ -25,7 +25,7 @@ class Command {
    * @typedef {Object} InteractionInfo
    * @property {boolean} enabled - Whether the slash command is enabled or not
    * @property {boolean} ephemeral - Whether the reply should be ephemeral
-   * @property {import('discord.js').ApplicationCommandOptionData[]} options - command options
+   * @property {import("discord.js").ApplicationCommandOptionData[]} options - command options
    */
 
   /**
@@ -43,15 +43,15 @@ class Command {
    * @property {string} description - A short description of the command
    * @property {number} cooldown - The command cooldown in seconds
    * @property {CommandCategory} category - The category this command belongs to
-   * @property {import('discord.js').PermissionResolvable[]} [botPermissions] - Permissions required by the client to use the command.
-   * @property {import('discord.js').PermissionResolvable[]} [userPermissions] - Permissions required by the user to use the command
+   * @property {import("discord.js").PermissionResolvable[]} [botPermissions] - Permissions required by the client to use the command.
+   * @property {import("discord.js").PermissionResolvable[]} [userPermissions] - Permissions required by the user to use the command
    * @property {Validation[]} [validations] - List of validations to be run before the command is executed
    * @property {CommandInfo} command - A short description of the command
    * @property {InteractionInfo} slashCommand - A short description of the command
    */
 
   /**
-   * @param {import('@src/structures').BotClient} client - The discord client
+   * @param {import("@src/structures").BotClient} client - The discord client
    * @param {CommandData} data - The command information
    */
   constructor(client, data) {
@@ -106,209 +106,8 @@ class Command {
   }
 
   /**
-   * Function that validates the message with the command options
-   * @param {import('discord.js').Message} message
-   * @param {string[]} args
-   * @param {string} invoke
-   * @param {string} prefix
-   */
-  async executeCommand(message, args, invoke, prefix) {
-    if (!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) return;
-
-    // callback validations
-    for (const validation of this.validations) {
-      if (!validation.callback(message)) {
-        return message.reply(validation.message);
-      }
-    }
-
-    // Owner commands
-    if (this.category === "OWNER" && !OWNER_IDS.includes(message.author.id)) {
-      return message.reply("This command is only accessible to bot owners");
-    }
-
-    // user permissions
-    if (message.member && this.userPermissions.length > 0) {
-      if (!message.channel.permissionsFor(message.member).has(this.userPermissions)) {
-        return message.reply(`You need ${parsePermissions(this.userPermissions)} for this command`);
-      }
-    }
-
-    // bot permissions
-    if (this.botPermissions.length > 0) {
-      if (!message.channel.permissionsFor(message.guild.me).has(this.botPermissions)) {
-        return message.reply(`I need ${parsePermissions(this.botPermissions)} for this command`);
-      }
-    }
-
-    // min args count
-    if (args.length < this.command.minArgsCount) {
-      // return message.reply(`You need at least ${this.command.minArgsCount} arguments to use this command`);
-      this.sendUsage(message.channel, prefix, invoke);
-      return;
-    }
-
-    // cooldown check
-    if (this.cooldown > 0) {
-      const remaining = this.getRemainingCooldown(message.author.id);
-      if (remaining > 0) {
-        return message.reply(`You are on cooldown. You can again use the command in \`${timeformat(remaining)}\``);
-      }
-    }
-
-    try {
-      await this.messageRun(message, args, invoke, prefix);
-    } catch (ex) {
-      await message.channel.send("Oops! An error occurred while running the command");
-      this.client.logger.error("messageRun", ex);
-    } finally {
-      this.applyCooldown(message.author.id);
-    }
-  }
-
-  /**
-   *
-   * @param {import('discord.js').CommandInteraction} interaction
-   */
-  async executeInteraction(interaction) {
-    // callback validations
-    for (const validation of this.validations) {
-      if (!validation.callback(interaction)) {
-        return interaction.reply({
-          content: validation.message,
-          ephemeral: true,
-        });
-      }
-    }
-
-    // Owner commands
-    if (this.category === "OWNER" && !OWNER_IDS.includes(interaction.user.id)) {
-      return interaction.reply({
-        content: `This command is only accessible to bot owners`,
-        ephemeral: true,
-      });
-    }
-
-    // user permissions
-    if (interaction.member && this.userPermissions.length > 0) {
-      if (!interaction.member.permissions.has(this.userPermissions)) {
-        return interaction.reply({
-          content: `You need ${parsePermissions(this.userPermissions)} for this command`,
-          ephemeral: true,
-        });
-      }
-    }
-
-    // bot permissions
-    if (this.botPermissions.length > 0) {
-      if (!interaction.guild.me.permissions.has(this.botPermissions)) {
-        return interaction.reply({
-          content: `I need ${parsePermissions(this.botPermissions)} for this command`,
-          ephemeral: true,
-        });
-      }
-    }
-
-    // cooldown check
-    if (this.cooldown > 0) {
-      const remaining = this.getRemainingCooldown(interaction.user.id);
-      if (remaining > 0) {
-        return interaction.reply({
-          content: `You are on cooldown. You can again use the command in \`${timeformat(remaining)}\``,
-          ephemeral: true,
-        });
-      }
-    }
-
-    try {
-      await interaction.deferReply({ ephemeral: this.slashCommand.ephemeral });
-      await this.interactionRun(interaction);
-    } catch (ex) {
-      await interaction.followUp("Oops! An error occurred while running the command");
-      this.client.logger.error("interactionRun", ex);
-    } finally {
-      this.applyCooldown(interaction.user.id);
-    }
-  }
-
-  /**
-   * Build a usage embed for this command
-   * @param {string} prefix - command prefix
-   * @param {string} invoke - alias that was used to trigger this command
-   * @param {string} title - the embed title
-   */
-  getCommandUsage(prefix = PREFIX, invoke = this.name, title = "Usage") {
-    let desc = "";
-    if (this.command.subcommands.length > 0) {
-      this.command.subcommands.forEach((sub) => {
-        desc += `\`${prefix}${invoke} ${sub.trigger}\`\n❯ ${sub.description}\n\n`;
-      });
-      if (this.cooldown) {
-        desc += `**Cooldown:** ${timeformat(this.cooldown)}`;
-      }
-    } else {
-      desc += `\`\`\`css\n${prefix}${invoke} ${this.command.usage}\`\`\``;
-      if (this.description !== "") desc += `\n**Help:** ${this.description}`;
-      if (this.cooldown) desc += `\n**Cooldown:** ${timeformat(this.cooldown)}`;
-    }
-
-    const embed = new MessageEmbed().setColor(EMBED_COLORS.BOT_EMBED).setDescription(desc);
-    if (title) embed.setAuthor({ name: title });
-    return embed;
-  }
-
-  /**
-   * send the commands usage embed
-   * @param {import('discord.js').BaseGuildTextChannel} channel - channel where the embed must be sent
-   * @param {string} prefix - command prefix
-   * @param {string} invoke - alias that was used to trigger this command
-   * @param {string} title - the embed title
-   */
-  sendUsage(channel, prefix, invoke, title) {
-    const embed = this.getCommandUsage(prefix, invoke, title);
-    sendMessage(channel, { embeds: [embed] });
-  }
-
-  getSlashUsage() {
-    let desc = "";
-    if (this.slashCommand.options.find((o) => o.type === "SUB_COMMAND")) {
-      const subCmds = this.slashCommand.options.filter((opt) => opt.type === "SUB_COMMAND");
-      subCmds.forEach((sub) => {
-        desc += `\`/${this.name} ${sub.name}\`\n❯ ${sub.description}\n\n`;
-      });
-    } else {
-      desc += `\`/${this.name}\`\n\n**Help:** ${this.description}`;
-    }
-
-    if (this.cooldown) {
-      desc += `\n**Cooldown:** ${timeformat(this.cooldown)}`;
-    }
-
-    const embed = new MessageEmbed().setColor(EMBED_COLORS.BOT_EMBED).setDescription(desc);
-    return embed;
-  }
-
-  getRemainingCooldown(memberId) {
-    const key = this.name + "|" + memberId;
-    if (this.client.cmdCooldownCache.has(key)) {
-      const remaining = (Date.now() - this.client.cmdCooldownCache.get(key)) * 0.001;
-      if (remaining > this.cooldown) {
-        this.client.cmdCooldownCache.delete(key);
-        return 0;
-      }
-      return this.cooldown - remaining;
-    }
-    return 0;
-  }
-
-  applyCooldown(memberId) {
-    const key = this.name + "|" + memberId;
-    this.client.cmdCooldownCache.set(key, Date.now());
-  }
-
-  /**
    * Validates the constructor parameters
-   * @param {import('@src/structures').BotClient} client - Client to validate
+   * @param {import("@src/structures").BotClient} client - Client to validate
    * @param {CommandData} data - Info to validate
    * @private
    */
@@ -424,6 +223,207 @@ class Command {
         throw new TypeError("Command.slashCommand options must be a array");
       }
     }
+  }
+
+  /**
+   * Function that validates the message with the command options
+   * @param {import("discord.js").Message} message
+   * @param {string[]} args
+   * @param {string} invoke
+   * @param {string} prefix
+   */
+  async executeCommand(message, args, invoke, prefix) {
+    if (!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) return;
+
+    // callback validations
+    for (const validation of this.validations) {
+      if (!validation.callback(message)) {
+        return message.reply(validation.message);
+      }
+    }
+
+    // Owner commands
+    if (this.category === "OWNER" && !OWNER_IDS.includes(message.author.id)) {
+      return message.reply("This command is only accessible to bot owners");
+    }
+
+    // user permissions
+    if (message.member && this.userPermissions.length > 0) {
+      if (!message.channel.permissionsFor(message.member).has(this.userPermissions)) {
+        return message.reply(`You need ${parsePermissions(this.userPermissions)} for this command`);
+      }
+    }
+
+    // bot permissions
+    if (this.botPermissions.length > 0) {
+      if (!message.channel.permissionsFor(message.guild.me).has(this.botPermissions)) {
+        return message.reply(`I need ${parsePermissions(this.botPermissions)} for this command`);
+      }
+    }
+
+    // min args count
+    if (args.length < this.command.minArgsCount) {
+      // return message.reply(`You need at least ${this.command.minArgsCount} arguments to use this command`);
+      this.sendUsage(message.channel, prefix, invoke);
+      return;
+    }
+
+    // cooldown check
+    if (this.cooldown > 0) {
+      const remaining = this.getRemainingCooldown(message.author.id);
+      if (remaining > 0) {
+        return message.reply(`You are on cooldown. You can again use the command in \`${timeformat(remaining)}\``);
+      }
+    }
+
+    try {
+      await this.messageRun(message, args, invoke, prefix);
+    } catch (ex) {
+      await message.channel.send("Oops! An error occurred while running the command");
+      this.client.logger.error("messageRun", ex);
+    } finally {
+      this.applyCooldown(message.author.id);
+    }
+  }
+
+  /**
+   *
+   * @param {import("discord.js").CommandInteraction} interaction
+   */
+  async executeInteraction(interaction) {
+    // callback validations
+    for (const validation of this.validations) {
+      if (!validation.callback(interaction)) {
+        return interaction.reply({
+          content: validation.message,
+          ephemeral: true
+        });
+      }
+    }
+
+    // Owner commands
+    if (this.category === "OWNER" && !OWNER_IDS.includes(interaction.user.id)) {
+      return interaction.reply({
+        content: `This command is only accessible to bot owners`,
+        ephemeral: true
+      });
+    }
+
+    // user permissions
+    if (interaction.member && this.userPermissions.length > 0) {
+      if (!interaction.member.permissions.has(this.userPermissions)) {
+        return interaction.reply({
+          content: `You need ${parsePermissions(this.userPermissions)} for this command`,
+          ephemeral: true
+        });
+      }
+    }
+
+    // bot permissions
+    if (this.botPermissions.length > 0) {
+      if (!interaction.guild.me.permissions.has(this.botPermissions)) {
+        return interaction.reply({
+          content: `I need ${parsePermissions(this.botPermissions)} for this command`,
+          ephemeral: true
+        });
+      }
+    }
+
+    // cooldown check
+    if (this.cooldown > 0) {
+      const remaining = this.getRemainingCooldown(interaction.user.id);
+      if (remaining > 0) {
+        return interaction.reply({
+          content: `You are on cooldown. You can again use the command in \`${timeformat(remaining)}\``,
+          ephemeral: true
+        });
+      }
+    }
+
+    try {
+      await interaction.deferReply({ ephemeral: this.slashCommand.ephemeral });
+      await this.interactionRun(interaction);
+    } catch (ex) {
+      await interaction.followUp("Oops! An error occurred while running the command");
+      this.client.logger.error("interactionRun", ex);
+    } finally {
+      this.applyCooldown(interaction.user.id);
+    }
+  }
+
+  /**
+   * Build a usage embed for this command
+   * @param {string} prefix - command prefix
+   * @param {string} invoke - alias that was used to trigger this command
+   * @param {string} title - the embed title
+   */
+  getCommandUsage(prefix = PREFIX, invoke = this.name, title = "Usage") {
+    let desc = "";
+    if (this.command.subcommands.length > 0) {
+      this.command.subcommands.forEach((sub) => {
+        desc += `\`${prefix}${invoke} ${sub.trigger}\`\n❯ ${sub.description}\n\n`;
+      });
+      if (this.cooldown) {
+        desc += `**Cooldown:** ${timeformat(this.cooldown)}`;
+      }
+    } else {
+      desc += `\`\`\`css\n${prefix}${invoke} ${this.command.usage}\`\`\``;
+      if (this.description !== "") desc += `\n**Help:** ${this.description}`;
+      if (this.cooldown) desc += `\n**Cooldown:** ${timeformat(this.cooldown)}`;
+    }
+
+    const embed = new MessageEmbed().setColor(EMBED_COLORS.BOT_EMBED).setDescription(desc);
+    if (title) embed.setAuthor({ name: title });
+    return embed;
+  }
+
+  /**
+   * send the commands usage embed
+   * @param {import("discord.js").BaseGuildTextChannel} channel - channel where the embed must be sent
+   * @param {string} prefix - command prefix
+   * @param {string} invoke - alias that was used to trigger this command
+   * @param {string} title - the embed title
+   */
+  sendUsage(channel, prefix, invoke, title) {
+    const embed = this.getCommandUsage(prefix, invoke, title);
+    sendMessage(channel, { embeds: [embed] });
+  }
+
+  getSlashUsage() {
+    let desc = "";
+    if (this.slashCommand.options.find((o) => o.type === "SUB_COMMAND")) {
+      const subCmds = this.slashCommand.options.filter((opt) => opt.type === "SUB_COMMAND");
+      subCmds.forEach((sub) => {
+        desc += `\`/${this.name} ${sub.name}\`\n❯ ${sub.description}\n\n`;
+      });
+    } else {
+      desc += `\`/${this.name}\`\n\n**Help:** ${this.description}`;
+    }
+
+    if (this.cooldown) {
+      desc += `\n**Cooldown:** ${timeformat(this.cooldown)}`;
+    }
+
+    const embed = new MessageEmbed().setColor(EMBED_COLORS.BOT_EMBED).setDescription(desc);
+    return embed;
+  }
+
+  getRemainingCooldown(memberId) {
+    const key = this.name + "|" + memberId;
+    if (this.client.cmdCooldownCache.has(key)) {
+      const remaining = (Date.now() - this.client.cmdCooldownCache.get(key)) * 0.001;
+      if (remaining > this.cooldown) {
+        this.client.cmdCooldownCache.delete(key);
+        return 0;
+      }
+      return this.cooldown - remaining;
+    }
+    return 0;
+  }
+
+  applyCooldown(memberId) {
+    const key = this.name + "|" + memberId;
+    this.client.cmdCooldownCache.set(key, Date.now());
   }
 }
 

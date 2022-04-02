@@ -3,8 +3,8 @@ const { getSettings } = require("@schemas/Guild");
 const { sendMessage } = require("@utils/botUtils");
 
 /**
- * @param {import('@src/structures').BotClient} client
- * @param {import('discord.js').Message} message
+ * @param {import("@src/structures").BotClient} client
+ * @param {import("discord.js").Message} message
  */
 module.exports = async (client, message) => {
   if (!message.guild || message.author.bot) return;
@@ -13,11 +13,11 @@ module.exports = async (client, message) => {
 
   // check for bot mentions
   if (message.content.includes(`${client.user.id}`)) {
-    sendMessage(message.channel, `My prefix is \`${settings.prefix}\``);
+    await sendMessage(message.channel, `My prefix is \`${settings.prefix}\``);
   }
 
   // ai chat
-  if (message.channelId === "931012366513094707") {
+  if (message.channelId === "873754858346414080" && !message.content.startsWith(";")) {
     await aiHandler.handleMessage(message);
     return;
   }

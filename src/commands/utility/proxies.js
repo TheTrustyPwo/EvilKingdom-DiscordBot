@@ -15,7 +15,7 @@ module.exports = class ProxiesCommand extends Command {
       command: {
         enabled: true,
         usage: "[type]",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -25,10 +25,10 @@ module.exports = class ProxiesCommand extends Command {
             description: "type of proxy",
             type: "STRING",
             required: true,
-            choices: PROXY_TYPES.map((p) => ({ name: p, value: p })),
-          },
-        ],
-      },
+            choices: PROXY_TYPES.map((p) => ({ name: p, value: p }))
+          }
+        ]
+      }
     });
   }
 

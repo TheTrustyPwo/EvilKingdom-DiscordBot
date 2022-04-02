@@ -14,11 +14,11 @@ module.exports = class DeafenCommand extends Command {
       command: {
         enabled: true,
         usage: "<ID|@member> <channel> [reason]",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

@@ -14,11 +14,11 @@ module.exports = class VMuteCommand extends Command {
       command: {
         enabled: true,
         usage: "<ID|@member> [reason]",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

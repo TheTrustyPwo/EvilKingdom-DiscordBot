@@ -14,8 +14,8 @@ module.exports = class PurgeBots extends Command {
       command: {
         enabled: true,
         usage: "[amount]",
-        aliases: ["purgebot"],
-      },
+        aliases: ["purgebot"]
+      }
     });
   }
 

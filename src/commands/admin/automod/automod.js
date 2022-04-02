@@ -15,33 +15,33 @@ module.exports = class Automod extends Command {
         subcommands: [
           {
             trigger: "antighostping <ON|OFF>",
-            description: "Logs ghost mentions in your server",
+            description: "Logs ghost mentions in your server"
           },
           {
             trigger: "antiinvites <ON|OFF>",
-            description: "Allow or disallow sending discord invites in message",
+            description: "Allow or disallow sending discord invites in message"
           },
           {
             trigger: "antilinks <ON|OFF>",
-            description: "Allow or disallow sending links in message",
+            description: "Allow or disallow sending links in message"
           },
           {
             trigger: "antiscam <ON|OFF>",
-            description: "Enable or disable antiscam detection",
+            description: "Enable or disable antiscam detection"
           },
           {
             trigger: "maxlines <number>",
-            description: "Sets maximum lines allowed per message [0 to disable]",
+            description: "Sets maximum lines allowed per message [0 to disable]"
           },
           {
             trigger: "maxmentions <number>",
-            description: "Sets maximum member mentions allowed per message [0 to disable]",
+            description: "Sets maximum member mentions allowed per message [0 to disable]"
           },
           {
             trigger: "maxrolementions <number>",
-            description: "Sets maximum role mentions allowed per message [0 to disable]",
-          },
-        ],
+            description: "Sets maximum role mentions allowed per message [0 to disable]"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -60,15 +60,15 @@ module.exports = class Automod extends Command {
                 choices: [
                   {
                     name: "ON",
-                    value: "ON",
+                    value: "ON"
                   },
                   {
                     name: "OFF",
-                    value: "OFF",
-                  },
-                ],
-              },
-            ],
+                    value: "OFF"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "antiinvites",
@@ -83,15 +83,15 @@ module.exports = class Automod extends Command {
                 choices: [
                   {
                     name: "ON",
-                    value: "ON",
+                    value: "ON"
                   },
                   {
                     name: "OFF",
-                    value: "OFF",
-                  },
-                ],
-              },
-            ],
+                    value: "OFF"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "antilinks",
@@ -106,15 +106,15 @@ module.exports = class Automod extends Command {
                 choices: [
                   {
                     name: "ON",
-                    value: "ON",
+                    value: "ON"
                   },
                   {
                     name: "OFF",
-                    value: "OFF",
-                  },
-                ],
-              },
-            ],
+                    value: "OFF"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "antiscam",
@@ -129,15 +129,15 @@ module.exports = class Automod extends Command {
                 choices: [
                   {
                     name: "ON",
-                    value: "ON",
+                    value: "ON"
                   },
                   {
                     name: "OFF",
-                    value: "OFF",
-                  },
-                ],
-              },
-            ],
+                    value: "OFF"
+                  }
+                ]
+              }
+            ]
           },
           {
             name: "maxlines",
@@ -148,9 +148,9 @@ module.exports = class Automod extends Command {
                 name: "amount",
                 description: "configuration amount (0 to disable)",
                 required: true,
-                type: "INTEGER",
-              },
-            ],
+                type: "INTEGER"
+              }
+            ]
           },
           {
             name: "maxmentions",
@@ -161,9 +161,9 @@ module.exports = class Automod extends Command {
                 name: "amount",
                 description: "configuration amount (0 to disable)",
                 required: true,
-                type: "INTEGER",
-              },
-            ],
+                type: "INTEGER"
+              }
+            ]
           },
           {
             name: "maxrolementions",
@@ -174,12 +174,12 @@ module.exports = class Automod extends Command {
                 name: "amount",
                 description: "configuration amount (0 to disable)",
                 required: true,
-                type: "INTEGER",
-              },
-            ],
-          },
-        ],
-      },
+                type: "INTEGER"
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

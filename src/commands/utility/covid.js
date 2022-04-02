@@ -15,7 +15,7 @@ module.exports = class CovidCommand extends Command {
       command: {
         enabled: true,
         usage: "<country>",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -24,10 +24,10 @@ module.exports = class CovidCommand extends Command {
             name: "country",
             description: "country name to get covid statistics for",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

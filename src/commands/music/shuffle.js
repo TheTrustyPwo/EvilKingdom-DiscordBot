@@ -10,11 +10,11 @@ module.exports = class Shuffle extends Command {
       category: "MUSIC",
       validations: musicValidations,
       command: {
-        enabled: true,
+        enabled: true
       },
       slashCommand: {
-        enabled: true,
-      },
+        enabled: true
+      }
     });
   }
 

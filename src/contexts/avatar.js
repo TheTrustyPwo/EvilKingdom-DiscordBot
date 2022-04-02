@@ -9,7 +9,7 @@ module.exports = class Avatar extends BaseContext {
       description: "displays avatar information about the user",
       type: "USER",
       enabled: true,
-      ephemeral: true,
+      ephemeral: true
     });
   }
 

@@ -13,7 +13,7 @@ module.exports = class Seek extends Command {
       validations: musicValidations,
       command: {
         enabled: true,
-        usage: "<duration>",
+        usage: "<duration>"
       },
       slashCommand: {
         enabled: true,
@@ -22,10 +22,10 @@ module.exports = class Seek extends Command {
             name: "time",
             description: "The time you want to seek to.",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 

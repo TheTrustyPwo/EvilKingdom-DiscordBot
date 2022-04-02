@@ -9,7 +9,7 @@ const OPEN_PERMS = ["MANAGE_CHANNELS"];
 const CLOSE_PERMS = ["MANAGE_CHANNELS", "READ_MESSAGE_HISTORY"];
 
 /**
- * @param {import('discord.js').Channel} channel
+ * @param {import("discord.js").Channel} channel
  */
 function isTicketChannel(channel) {
   return (
@@ -21,14 +21,14 @@ function isTicketChannel(channel) {
 }
 
 /**
- * @param {import('discord.js').Guild} guild
+ * @param {import("discord.js").Guild} guild
  */
 function getTicketChannels(guild) {
   return guild.channels.cache.filter((ch) => isTicketChannel(ch));
 }
 
 /**
- * @param {import('discord.js').Guild} guild
+ * @param {import("discord.js").Guild} guild
  * @param {string} userId
  */
 function getExistingTicketChannel(guild, userId) {
@@ -37,20 +37,21 @@ function getExistingTicketChannel(guild, userId) {
 }
 
 /**
- * @param {import('discord.js').BaseGuildTextChannel} channel
+ * @param {import("discord.js").BaseGuildTextChannel} channel
  */
 async function parseTicketDetails(channel) {
   if (!channel.topic) return;
   const split = channel.topic?.split("|");
   const userId = split[1];
   const title = split[2];
-  const user = await channel.client.users.fetch(userId, { cache: false }).catch(() => {});
+  const user = await channel.client.users.fetch(userId, { cache: false }).catch(() => {
+  });
   return { title, user };
 }
 
 /**
- * @param {import('discord.js').BaseGuildTextChannel} channel
- * @param {import('discord.js').User} closedBy
+ * @param {import("discord.js").BaseGuildTextChannel} channel
+ * @param {import("discord.js").User} closedBy
  * @param {string} [reason]
  */
 async function closeTicket(channel, closedBy, reason) {
@@ -114,8 +115,8 @@ async function closeTicket(channel, closedBy, reason) {
 }
 
 /**
- * @param {import('discord.js').Guild} guild
- * @param {import('discord.js').User} author
+ * @param {import("discord.js").Guild} guild
+ * @param {import("discord.js").User} author
  */
 async function closeAllTickets(guild, author) {
   const channels = getTicketChannels(guild);
@@ -132,8 +133,8 @@ async function closeAllTickets(guild, author) {
 }
 
 /**
- * @param {import('discord.js').Guild} guild
- * @param {import('discord.js').User} user
+ * @param {import("discord.js").Guild} guild
+ * @param {import("discord.js").User} user
  * @param {Object} config
  */
 async function openTicket(guild, user, config) {
@@ -151,23 +152,23 @@ async function openTicket(guild, user, config) {
     const permissionOverwrites = [
       {
         id: guild.roles.everyone,
-        deny: ["VIEW_CHANNEL"],
+        deny: ["VIEW_CHANNEL"]
       },
       {
         id: user.id,
-        allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"],
+        allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"]
       },
       {
         id: guild.me.roles.highest.id,
-        allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"],
-      },
+        allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"]
+      }
     ];
 
     if (config.support_roles.length > 0) {
       config.support_roles.forEach((role) => {
         permissionOverwrites.push({
           id: role,
-          allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"],
+          allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"]
         });
       });
     }
@@ -175,7 +176,7 @@ async function openTicket(guild, user, config) {
     const tktChannel = await guild.channels.create(`tіcket-${ticketNumber}`, {
       type: "GUILD_TEXT",
       topic: `tіcket|${user.id}|${config.title}`,
-      permissionOverwrites,
+      permissionOverwrites
     });
 
     const embed = new MessageEmbed()
@@ -216,5 +217,5 @@ module.exports = {
   isTicketChannel,
   closeTicket,
   closeAllTickets,
-  openTicket,
+  openTicket
 };

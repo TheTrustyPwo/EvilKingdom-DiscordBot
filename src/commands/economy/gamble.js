@@ -15,7 +15,7 @@ module.exports = class Gamble extends Command {
         enabled: true,
         usage: "<amount>",
         minArgsCount: 1,
-        aliases: ["slot"],
+        aliases: ["slot"]
       },
       slashCommand: {
         enabled: true,
@@ -24,10 +24,10 @@ module.exports = class Gamble extends Command {
             name: "coins",
             description: "number of coins to bet",
             required: true,
-            type: "INTEGER",
-          },
-        ],
-      },
+            type: "INTEGER"
+          }
+        ]
+      }
     });
   }
 

@@ -14,8 +14,8 @@ module.exports = class PurgeAttachments extends Command {
       command: {
         enabled: true,
         usage: "[amount]",
-        aliases: ["purgeattachment", "purgeattachments"],
-      },
+        aliases: ["purgeattachment", "purgeattachments"]
+      }
     });
   }
 

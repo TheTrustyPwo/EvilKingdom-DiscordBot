@@ -2,8 +2,8 @@ const { MessageEmbed } = require("discord.js");
 const { getSettings } = require("@schemas/Guild");
 
 /**
- * @param {import('@src/structures').BotClient} client
- * @param {import('discord.js').Guild} guild
+ * @param {import("@src/structures").BotClient} client
+ * @param {import("discord.js").Guild} guild
  */
 module.exports = async (client, guild) => {
   client.logger.log(`Guild Left: ${guild.name} Members: ${guild.memberCount}`);
@@ -28,6 +28,6 @@ module.exports = async (client, guild) => {
   client.joinLeaveWebhook.send({
     username: "Leave",
     avatarURL: client.user.displayAvatarURL(),
-    embeds: [embed],
+    embeds: [embed]
   });
 };

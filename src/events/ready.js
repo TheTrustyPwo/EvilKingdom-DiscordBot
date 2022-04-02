@@ -5,7 +5,7 @@ const { updateCounterChannels } = require("@src/handlers/counter");
 const { PRESENCE } = require("@root/config");
 
 /**
- * @param {import('@src/structures').BotClient} client
+ * @param {import("@src/structures").BotClient} client
  */
 module.exports = async (client) => {
   client.logger.success(`Logged in as ${client.user.tag}! (${client.user.id})`);
@@ -47,7 +47,7 @@ module.exports = async (client) => {
 };
 
 /**
- * @param {import('@src/structures').BotClient} client
+ * @param {import("@src/structures").BotClient} client
  */
 const updatePresence = (client) => {
   let message = PRESENCE.MESSAGE;
@@ -66,8 +66,8 @@ const updatePresence = (client) => {
     activities: [
       {
         name: message,
-        type: PRESENCE.TYPE,
-      },
-    ],
+        type: PRESENCE.TYPE
+      }
+    ]
   });
 };

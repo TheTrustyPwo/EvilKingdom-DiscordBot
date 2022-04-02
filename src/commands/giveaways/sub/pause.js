@@ -1,5 +1,5 @@
 /**
- * @param {import('discord.js').GuildMember} member
+ * @param {import("discord.js").GuildMember} member
  * @param {string} messageId
  */
 module.exports = async (member, messageId) => {

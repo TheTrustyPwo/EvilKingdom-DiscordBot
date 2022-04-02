@@ -10,11 +10,11 @@ module.exports = class BotInvite extends Command {
       category: "INFORMATION",
       botPermissions: ["EMBED_LINKS"],
       command: {
-        enabled: true,
+        enabled: true
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

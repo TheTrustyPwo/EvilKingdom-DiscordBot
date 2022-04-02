@@ -17,13 +17,13 @@ module.exports = class NickCommand extends Command {
         subcommands: [
           {
             trigger: "set <@member> <name>",
-            description: "sets the nickname of the specified member",
+            description: "sets the nickname of the specified member"
           },
           {
             trigger: "reset <@member>",
-            description: "reset a members nickname",
-          },
-        ],
+            description: "reset a members nickname"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -37,15 +37,15 @@ module.exports = class NickCommand extends Command {
                 name: "user",
                 description: "the member whose nick you want to set",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "name",
                 description: "the nickname to set",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "reset",
@@ -56,12 +56,12 @@ module.exports = class NickCommand extends Command {
                 name: "user",
                 description: "the members whose nick you want to reset",
                 type: "USER",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

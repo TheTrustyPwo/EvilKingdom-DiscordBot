@@ -19,21 +19,21 @@ module.exports = class BankCommand extends Command {
         subcommands: [
           {
             trigger: "balance",
-            description: "check your balance",
+            description: "check your balance"
           },
           {
             trigger: "deposit <coins>",
-            description: "deposit coins to your bank account",
+            description: "deposit coins to your bank account"
           },
           {
             trigger: "withdraw <coins>",
-            description: "withdraw coins from your bank account",
+            description: "withdraw coins from your bank account"
           },
           {
             trigger: "transfer <user> <coins>",
-            description: "transfer coins to another user",
-          },
-        ],
+            description: "transfer coins to another user"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -47,9 +47,9 @@ module.exports = class BankCommand extends Command {
                 name: "user",
                 description: "name of the user",
                 type: "USER",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "deposit",
@@ -60,9 +60,9 @@ module.exports = class BankCommand extends Command {
                 name: "coins",
                 description: "number of coins to deposit",
                 type: "INTEGER",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "withdraw",
@@ -73,9 +73,9 @@ module.exports = class BankCommand extends Command {
                 name: "coins",
                 description: "number of coins to withdraw",
                 type: "INTEGER",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "transfer",
@@ -86,18 +86,18 @@ module.exports = class BankCommand extends Command {
                 name: "user",
                 description: "the user to whom coins must be transferred",
                 type: "USER",
-                required: true,
+                required: true
               },
               {
                 name: "coins",
                 description: "the amount of coins to transfer",
                 type: "INTEGER",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 

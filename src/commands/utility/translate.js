@@ -21,7 +21,7 @@ module.exports = class TranslateCommand extends Command {
         enabled: true,
         aliases: ["tr"],
         usage: "<iso-code> <message>",
-        minArgsCount: 2,
+        minArgsCount: 2
       },
       slashCommand: {
         enabled: true,
@@ -31,16 +31,16 @@ module.exports = class TranslateCommand extends Command {
             description: "translation language",
             type: "STRING",
             required: true,
-            choices: choices.map((choice) => ({ name: GOOGLE_TRANSLATE[choice], value: choice })),
+            choices: choices.map((choice) => ({ name: GOOGLE_TRANSLATE[choice], value: choice }))
           },
           {
             name: "text",
             description: "the text that requires translation",
             type: "STRING",
-            required: true,
-          },
-        ],
-      },
+            required: true
+          }
+        ]
+      }
     });
   }
 
@@ -86,7 +86,7 @@ async function getTranslation(author, input, outputCode) {
   const embed = new MessageEmbed()
     .setAuthor({
       name: `${author.username} says`,
-      iconURL: author.avatarURL(),
+      iconURL: author.avatarURL()
     })
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setDescription(data.output)

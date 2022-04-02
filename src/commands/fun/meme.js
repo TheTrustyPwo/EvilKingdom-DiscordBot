@@ -14,7 +14,7 @@ module.exports = class MemeCommand extends Command {
       cooldown: 20,
       command: {
         enabled: true,
-        usage: "[category]",
+        usage: "[category]"
       },
       slashCommand: {
         enabled: true,
@@ -23,10 +23,10 @@ module.exports = class MemeCommand extends Command {
             name: "category",
             description: "meme category",
             type: "STRING",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 
@@ -44,14 +44,14 @@ module.exports = class MemeCommand extends Command {
 
     const sentMsg = await message.reply({
       embeds: [embed],
-      components: [buttonRow],
+      components: [buttonRow]
     });
 
     const collector = message.channel.createMessageComponentCollector({
       filter: (reactor) => reactor.user.id === message.author.id,
       time: this.cooldown * 1000,
       max: 3,
-      dispose: true,
+      dispose: true
     });
 
     collector.on("collect", async (response) => {
@@ -59,7 +59,7 @@ module.exports = class MemeCommand extends Command {
       const embed = await getRandomEmbed(choice);
       await sentMsg.edit({
         embeds: [embed],
-        components: [buttonRow],
+        components: [buttonRow]
       });
 
       await response.deferUpdate();
@@ -68,7 +68,7 @@ module.exports = class MemeCommand extends Command {
     collector.on("end", () => {
       buttonRow.components.forEach((button) => button.setDisabled(true));
       return sentMsg.edit({
-        components: [buttonRow],
+        components: [buttonRow]
       });
     });
   }
@@ -86,14 +86,14 @@ module.exports = class MemeCommand extends Command {
 
     await interaction.followUp({
       embeds: [embed],
-      components: [buttonRow],
+      components: [buttonRow]
     });
 
     const collector = interaction.channel.createMessageComponentCollector({
       filter: (reactor) => reactor.user.id === interaction.user.id,
       time: this.cooldown * 1000,
       max: 3,
-      dispose: true,
+      dispose: true
     });
 
     collector.on("collect", async (response) => {
@@ -101,7 +101,7 @@ module.exports = class MemeCommand extends Command {
       const embed = await getRandomEmbed(choice);
       await interaction.editReply({
         embeds: [embed],
-        components: [buttonRow],
+        components: [buttonRow]
       });
 
       await response.deferUpdate();
@@ -110,7 +110,7 @@ module.exports = class MemeCommand extends Command {
     collector.on("end", () => {
       buttonRow.components.forEach((button) => button.setDisabled(true));
       return interaction.editReply({
-        components: [buttonRow],
+        components: [buttonRow]
       });
     });
   }

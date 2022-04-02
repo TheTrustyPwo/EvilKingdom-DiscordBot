@@ -11,11 +11,11 @@ module.exports = class InviteRanks extends Command {
       category: "INVITE",
       botPermissions: ["EMBED_LINKS"],
       command: {
-        enabled: true,
+        enabled: true
       },
       slashCommand: {
-        enabled: true,
-      },
+        enabled: true
+      }
     });
   }
 

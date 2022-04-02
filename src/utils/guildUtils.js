@@ -64,7 +64,7 @@ async function setVoiceChannelName(vc, name) {
 async function getMemberStats(guild) {
   const all = await guild.members.fetch({
     force: false,
-    cache: false,
+    cache: false
   });
   const total = all.size;
   const bots = all.filter((mem) => mem.user.bot).size;
@@ -119,12 +119,14 @@ async function resolveMember(message, query, exact = false) {
     const mentioned = message.mentions.members.find((m) => m.id === id); // check if mentions contains the ID
     if (mentioned) return mentioned;
 
-    const fetched = await memberManager.fetch({ user: id }).catch(() => {});
+    const fetched = await memberManager.fetch({ user: id }).catch(() => {
+    });
     if (fetched) return fetched;
   }
 
   // Fetch and cache members from API
-  await memberManager.fetch({ query }).catch(() => {});
+  await memberManager.fetch({ query }).catch(() => {
+  });
 
   // Check if exact tag is matched
   const matchingTags = memberManager.cache.filter((mem) => mem.user.tag === query);
@@ -158,7 +160,7 @@ async function resolveMembers(message) {
   const remaining = message.content.split(lastMatch)[1].trim();
   return {
     members: targetMembers,
-    remainingArgs: remaining.split(/\\s/),
+    remainingArgs: remaining.split(/\\s/)
   };
 }
 
@@ -168,5 +170,5 @@ module.exports = {
   setVoiceChannelName,
   getMemberStats,
   findMatchingRoles,
-  resolveMember,
+  resolveMember
 };

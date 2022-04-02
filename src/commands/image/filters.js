@@ -16,7 +16,7 @@ module.exports = class Filters extends Command {
       botPermissions: ["EMBED_LINKS", "ATTACH_FILES"],
       command: {
         enabled: true,
-        aliases: availableFilters,
+        aliases: availableFilters
       },
       slashCommand: {
         enabled: true,
@@ -26,22 +26,22 @@ module.exports = class Filters extends Command {
             description: "the type of filter",
             type: "STRING",
             required: true,
-            choices: availableFilters.map((filter) => ({ name: filter, value: filter })),
+            choices: availableFilters.map((filter) => ({ name: filter, value: filter }))
           },
           {
             name: "user",
             description: "the user to whose avatar the filter needs to applied",
             type: "USER",
-            required: false,
+            required: false
           },
           {
             name: "link",
             description: "the image link to which the filter needs to applied",
             type: "STRING",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

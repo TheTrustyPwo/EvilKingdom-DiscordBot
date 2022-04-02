@@ -13,7 +13,7 @@ module.exports = class Warn extends Command {
       command: {
         enabled: true,
         usage: "<ID|@member> [reason]",
-        minArgsCount: 1,
+        minArgsCount: 1
       },
       slashCommand: {
         enabled: true,
@@ -22,16 +22,16 @@ module.exports = class Warn extends Command {
             name: "user",
             description: "the target member",
             type: "USER",
-            required: true,
+            required: true
           },
           {
             name: "reason",
             description: "reason for warn",
             type: "STRING",
-            required: false,
-          },
-        ],
-      },
+            required: false
+          }
+        ]
+      }
     });
   }
 

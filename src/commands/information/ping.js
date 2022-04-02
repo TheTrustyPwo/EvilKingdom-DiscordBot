@@ -8,13 +8,13 @@ module.exports = class PingCommand extends Command {
       description: "shows the current ping from the bot to the discord servers",
       category: "INFORMATION",
       command: {
-        enabled: true,
+        enabled: true
       },
       slashCommand: {
         enabled: true,
         ephemeral: true,
-        options: [],
-      },
+        options: []
+      }
     });
   }
 

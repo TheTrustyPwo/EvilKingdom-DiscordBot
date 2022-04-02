@@ -12,11 +12,11 @@ module.exports = class BotStats extends Command {
       cooldown: 5,
       command: {
         enabled: true,
-        aliases: ["botstat", "botinfo"],
+        aliases: ["botstat", "botinfo"]
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

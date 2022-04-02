@@ -12,11 +12,11 @@ module.exports = class UserInfo extends Command {
       botPermissions: ["EMBED_LINKS"],
       command: {
         enabled: true,
-        usage: "[@member|id]",
+        usage: "[@member|id]"
       },
       slashCommand: {
-        enabled: false,
-      },
+        enabled: false
+      }
     });
   }
 

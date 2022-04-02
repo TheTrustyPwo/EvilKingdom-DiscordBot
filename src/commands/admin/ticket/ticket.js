@@ -29,33 +29,33 @@ module.exports = class Ticket extends Command {
         subcommands: [
           {
             trigger: "setup",
-            description: "start an interactive ticket setup",
+            description: "start an interactive ticket setup"
           },
           {
             trigger: "log <#channel>",
-            description: "setup log channel for tickets",
+            description: "setup log channel for tickets"
           },
           {
             trigger: "limit <number>",
-            description: "set maximum number of concurrent open tickets",
+            description: "set maximum number of concurrent open tickets"
           },
           {
             trigger: "close",
-            description: "close the ticket",
+            description: "close the ticket"
           },
           {
             trigger: "closeall",
-            description: "close all open tickets",
+            description: "close all open tickets"
           },
           {
             trigger: "add <userId|roleId>",
-            description: "add user/role to the ticket",
+            description: "add user/role to the ticket"
           },
           {
             trigger: "remove <userId|roleId>",
-            description: "remove user/role from the ticket",
-          },
-        ],
+            description: "remove user/role from the ticket"
+          }
+        ]
       },
       slashCommand: {
         enabled: true,
@@ -70,27 +70,27 @@ module.exports = class Ticket extends Command {
                 description: "the channel where ticket creation message must be sent",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
+                required: true
               },
               {
                 name: "title",
                 description: "the title for the ticket message",
                 type: "STRING",
-                required: true,
+                required: true
               },
               {
                 name: "role",
                 description: "the role's which can have access to newly opened tickets",
                 type: "ROLE",
-                required: false,
+                required: false
               },
               {
                 name: "color",
                 description: "hex color for the ticket embed",
                 type: "STRING",
-                required: false,
-              },
-            ],
+                required: false
+              }
+            ]
           },
           {
             name: "log",
@@ -102,9 +102,9 @@ module.exports = class Ticket extends Command {
                 description: "channel where ticket logs must be sent",
                 type: "CHANNEL",
                 channelTypes: ["GUILD_TEXT"],
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "limit",
@@ -115,19 +115,19 @@ module.exports = class Ticket extends Command {
                 name: "amount",
                 description: "max number of tickets",
                 type: "INTEGER",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "close",
             description: "closes the ticket [used in ticket channel only]",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "closeall",
             description: "closes all open tickets",
-            type: "SUB_COMMAND",
+            type: "SUB_COMMAND"
           },
           {
             name: "add",
@@ -138,9 +138,9 @@ module.exports = class Ticket extends Command {
                 name: "user_id",
                 description: "the id of the user to add",
                 type: "STRING",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             name: "remove",
@@ -151,12 +151,12 @@ module.exports = class Ticket extends Command {
                 name: "user",
                 description: "the user to remove",
                 type: "USER",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
     });
   }
 
@@ -318,7 +318,7 @@ async function runInteractiveSetup({ channel, guild, author }) {
   try {
     // wait for channel
     await channel.send({
-      embeds: [embed.setDescription("Please `mention the channel` in which the ticket message must be sent")],
+      embeds: [embed.setDescription("Please `mention the channel` in which the ticket message must be sent")]
     });
     let reply = (await channel.awaitMessages({ filter, max: 1, time: SETUP_TIMEOUT })).first();
     if (reply.content.toLowerCase() === "cancel") return reply.reply("Ticket setup has been cancelled");
@@ -432,7 +432,7 @@ async function addToTicket({ channel }, inputId) {
   try {
     await channel.permissionOverwrites.create(inputId, {
       VIEW_CHANNEL: true,
-      SEND_MESSAGES: true,
+      SEND_MESSAGES: true
     });
 
     return "Done";
@@ -448,7 +448,7 @@ async function removeFromTicket({ channel }, inputId) {
   try {
     channel.permissionOverwrites.create(inputId, {
       VIEW_CHANNEL: false,
-      SEND_MESSAGES: false,
+      SEND_MESSAGES: false
     });
     return "Done";
   } catch (ex) {

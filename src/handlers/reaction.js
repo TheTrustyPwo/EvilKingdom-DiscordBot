@@ -10,7 +10,7 @@ const { timeformat } = require("@utils/miscUtils");
 const TRANSLATE_COOLDOWN = 120;
 
 /**
- * @param {import('discord.js').User} user
+ * @param {import("discord.js").User} user
  */
 const getTranslationCooldown = (user) => {
   if (user.client.flagTranslateCache.has(user.id)) {
@@ -82,7 +82,7 @@ async function handleFlagReaction(countryCode, message, user) {
       new MessageButton({
         url: message.url,
         label: "Original Message",
-        style: "LINK",
+        style: "LINK"
       })
     );
 
@@ -92,7 +92,7 @@ async function handleFlagReaction(countryCode, message, user) {
       .setDescription(desc)
       .setFooter({
         text: `Requested by ${user.tag}`,
-        iconURL: user.displayAvatarURL(),
+        iconURL: user.displayAvatarURL()
       });
 
     sendMessage(message.channel, { embeds: [embed], components: [btnRow] }).then(
@@ -105,5 +105,5 @@ async function handleFlagReaction(countryCode, message, user) {
 
 module.exports = {
   getRole,
-  handleFlagReaction,
+  handleFlagReaction
 };
