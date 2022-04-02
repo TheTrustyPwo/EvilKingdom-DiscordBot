@@ -1,6 +1,6 @@
 {
-  "name": "discord-js-bot",
-  "version": "4.1.0",
+  "name": "evil-bot",
+  "version": "1.0.0",
   "description": "A multipurpose discord bot built using discord-js",
   "main": "bot.js",
   "author": "ThePwo",
@@ -11,11 +11,6 @@
   "scripts": {
     "dev": "nodemon .",
     "start": "node ."
-  },
-  "homepage": "https://github.com/saiteja-madha/discord-js-bot#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/saiteja-madha/discord-js-bot.git"
   },
   "dependencies": {
     "@vitalets/google-translate-api": "^7.0.0",
@@ -41,6 +36,7 @@
     "mongoose": "^6.2.8",
     "nekos.life": "^2.0.9",
     "node-fetch": "^2.6.1",
+    "openai": "^2.0.5",
     "os": "^0.1.2",
     "outdent": "^0.8.0",
     "pretty-ms": "^7.0.1",
@@ -59,12 +55,6 @@
     "nodemon": "^2.0.15",
     "prettier": "2.5.1"
   },
-  "keywords": [
-    "discord",
-    "discord.js",
-    "bot",
-    "multipurpose"
-  ],
   "_moduleAliases": {
     "@root": ".",
     "@commands": "src/commands/",
@@ -72,8 +62,5 @@
     "@schemas": "src/schemas/",
     "@src": "src/",
     "@utils": "src/utils/"
-  },
-  "bugs": {
-    "url": "https://github.com/saiteja-madha/discord-js-bot/issues"
   }
 }

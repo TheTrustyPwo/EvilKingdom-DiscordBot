@@ -1,4 +1,4 @@
-const { automodHandler, xpHandler } = require("@src/handlers");
+const { automodHandler, xpHandler, aiHandler } = require("@src/handlers");
 const { getSettings } = require("@schemas/Guild");
 const { sendMessage } = require("@utils/botUtils");
 
@@ -14,6 +14,12 @@ module.exports = async (client, message) => {
   // check for bot mentions
   if (message.content.includes(`${client.user.id}`)) {
     sendMessage(message.channel, `My prefix is \`${settings.prefix}\``);
+  }
+
+  // ai chat
+  if (message.channelId === "931012366513094707") {
+    await aiHandler.handleMessage(message);
+    return;
   }
 
   let isCommand = false;
