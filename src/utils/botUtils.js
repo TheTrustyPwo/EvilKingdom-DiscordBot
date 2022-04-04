@@ -1,6 +1,5 @@
-const { getJson } = require("@utils/httpUtils");
 const config = require("@root/config.js");
-const { success, warn, error, log } = require("@src/helpers/logger");
+const { warn, error, log } = require("@src/helpers/logger");
 
 function validateConfig() {
   log("Validating config.js and environment variables");

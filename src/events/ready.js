@@ -25,7 +25,7 @@ module.exports = async (client) => {
     if (client.config.INTERACTIONS.GLOBAL) {
       await client.registerInteractions();
     } else {
-      client.config.INTERACTIONS.TEST_GUILD_IDS.forEach(async (guildId) => await client.registerInteractions(guildId))
+      client.config.INTERACTIONS.TEST_GUILD_IDS.forEach(async (guildId) => await client.registerInteractions(guildId));
     }
   }
 
