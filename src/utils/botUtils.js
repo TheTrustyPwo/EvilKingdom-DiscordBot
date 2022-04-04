@@ -2,19 +2,6 @@ const { getJson } = require("@utils/httpUtils");
 const config = require("@root/config.js");
 const { success, warn, error, log } = require("@src/helpers/logger");
 
-async function checkForUpdates() {
-  const response = await getJson("https://api.github.com/repos/saiteja-madha/discord-js-bot/releases/latest");
-  if (!response.success) return error("VersionCheck: Failed to check for bot updates");
-  if (response.data) {
-    if (require("@root/package.json").version.replace(/[^0-9]/g, "") >= response.data.tag_name.replace(/[^0-9]/g, "")) {
-      success("VersionCheck: Your discord bot is up to date");
-    } else {
-      warn(`VersionCheck: ${response.data.tag_name} update is available`);
-      warn("download: https://github.com/saiteja-madha/discord-js-bot/releases/latest");
-    }
-  }
-}
-
 function validateConfig() {
   log("Validating config.js and environment variables");
   // Validate .env file
@@ -59,8 +46,7 @@ function validateConfig() {
   if (!config.SUPPORT_SERVER) warn("config.js: SUPPORT_SERVER is not provided");
 }
 
-async function startupCheck() {
-  await checkForUpdates();
+function startupCheck() {
   validateConfig();
 }
 

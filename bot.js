@@ -17,7 +17,7 @@ client.loadEvents("src/events");
 process.on("unhandledRejection", (err) => client.logger.error(`Unhandled exception`, err));
 
 (async () => {
-  await startupCheck();
+  startupCheck();
   if (client.config.DASHBOARD.enabled) {
     client.logger.log("Launching dashboard");
     try {
